@@ -1,56 +1,22 @@
 setwd("//dtu-storage/sthth/Documents/Case 1/Data")
 
-# memory.limit(200000)
 
-FoodDaily <- read.csv("FoodDaily.csv")
-MeatDaily <- FoodDaily[, c(1:4,34,45,58)]
-
-summary(MeatDaily$proc.meat) #For the whole population
-# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 0.00   12.50   28.29   39.04   54.21  467.14
-
-summary(MeatDaily$total.meat)
-# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 0.00   67.99  101.11  115.17  148.00  561.43
-
-# install.packages("data.table")
+#packages
 library(data.table)
-
-agebreaks <- c(15,20,25,30,35,40,45,50,55,60,65,70,75,80)
-agelabels= c("15-19","20-24","25-29","30-34","35-39", "40-44", "45-49", "50-54","55-59", "60-64","65-69", "70-74","75-79")
-
-setDT(MeatDaily)[ , agegroups:= cut(age, breaks= agebreaks, right= FALSE, labels= agelabels)]
-
-#Description of total intakes of red and processed meat (mean, sd, percentiles)
-tapply(MeatDaily$proc.meat, MeatDaily$agegroups, mean)
-# 15-19    20-24    25-29    30-34    35-39    40-44    45-49    50-54    55-59    60-64    65-69    70-74    75-79 
-# 40.46912 39.11397 36.68030 43.93731 37.68697 42.47371 41.76834 40.91059 41.13618 37.60286 33.96524 30.36619 49.24735 
-
-tapply(MeatDaily$total.meat, MeatDaily$agegroups, mean)
-# 15-19     20-24     25-29     30-34     35-39     40-44     45-49     50-54     55-59     60-64     65-69     70-74     75-79 
-# 116.38530 111.38587 121.45059 124.94165 119.50463 121.39883 116.73291 121.37244 115.92128 114.20197 103.59411  96.55459 116.09365 
-
-
-tapply(MeatDaily$proc.meat, MeatDaily$sex, mean)
-# 1        2 
-# 54.56859 24.06757
-
-tapply(MeatDaily$proc.meat, MeatDaily$sex, quantile, prob = 0.10)
-# 1        2 
-# 8.843571 2.150000 
-
-tapply(MeatDaily$proc.meat, MeatDaily$sex, quantile, prob = 0.50)
-# 1        2 
-# 44.28571 18.21429  
-
-tapply(MeatDaily$proc.meat, MeatDaily$sex, quantile, prob = 0.90)
-# 1        2 
-# 114.2857  54.0000  
-
-############################################## Ref scenario  ##################################################
-
 library(mc2d)
+library(fitdistrplus)
+library(goftest)
 
+
+#settings
+iters_var <- 100000
+iters_unc <- 1000
+
+ndvar(iters_var)
+ndunc(iters_unc)
+
+
+#population statistics
 SEYLL_15_19 <- 74.54
 SEYLL_20_24 <- 69.57
 SEYLL_25_29 <- 64.6
@@ -140,6 +106,8 @@ pop_women <- pop_15_19w + pop_20_24w + pop_25_29w + pop_30_34w + pop_35_39w + po
   pop_55_59w + pop_60_64w + pop_65_69w + pop_70_74w + pop_75_79w + pop_80_84w + pop_85w
 
 
+#Stomach cancer incidence/mortality in Denmark, 2015
+
 ## Background risk of non-cardia stomach cancer for different age and sex groups - non-cardia assumed to comprise
 ## 1/3 of total stomach cancer cases (ref: Danish Cancer Society)
 
@@ -210,7 +178,7 @@ fatal75_79w <- 0.497560976
 fatal80_84w <- 0.844186047
 fatal85w <- 0.939130435
 
-
+#Stomach cancer natural history model
 time_diagnosis <- 0.5
 time_remission_cure <- 8
 time_remission_death <- 0.267
@@ -219,12 +187,8 @@ time_terminal <- 0.083
 time_total_YLL <- time_diagnosis + time_remission_death + time_disseminated + time_terminal
 time_total_YLD <- time_diagnosis + time_remission_cure
 
-iters_var <- 100000
-iters_unc <- 1000
 
-ndvar(iters_var)
-ndunc(iters_unc)
-
+#disability weights (Salomon et al., 2015)
 set.seed(1)
 dw_diagnosis <- mcstoc(rpert, type = "U", min=0.193, mode=0.288, max=0.339)
 dw_remission <- 0.2
@@ -232,7 +196,18 @@ dw_disseminated <- mcstoc(rpert, type = "U", min=0.307, mode=0.451, max=0.6)
 dw_terminal <- mcstoc(rpert, type = "U", min=0.377, mode=0.54, max=0.687)
 
 
-################################################ DALY calc males #####################################################
+##### Ref scenario #####
+
+FoodDaily <- read.csv("FoodDaily.csv")
+MeatDaily <- FoodDaily[, c(1:4,34,45,58)]
+
+agebreaks <- c(15,20,25,30,35,40,45,50,55,60,65,70,75,80)
+agelabels= c("15-19","20-24","25-29","30-34","35-39", "40-44", "45-49", "50-54","55-59", "60-64","65-69", "70-74","75-79")
+
+setDT(MeatDaily)[ , agegroups:= cut(age, breaks= agebreaks, right= FALSE, labels= agelabels)]
+
+
+##### DALY calc males #####
 
 # Zero incidence for males 15-29 years of age
 
@@ -442,7 +417,7 @@ DALY <- YLL + YLD
 DALY85totalm <- DALY * pop_85m
 
 
-################################################ DALY calc females #####################################################
+##### DALY calc females #####
 
 # Zero incidence for females 15-19 and 30-39 years of age
 
@@ -651,7 +626,7 @@ DALY <- YLL + YLD
 
 DALY85totalw <- DALY * pop_85w
 
-############################################### Total DALYs ref ######################################################
+###### Total DALYs ref #####
 
 DALYtotalref <- DALY30_34totalm + DALY35_39totalm +  DALY40_44totalm + DALY45_49totalm + DALY50_54totalm +
   DALY55_59totalm + DALY60_64totalm + DALY65_69totalm +  DALY70_74totalm + DALY75_79totalm + DALY80_84totalm +
@@ -663,7 +638,7 @@ summary(DALYtotalref)
 
 
 
-############################################ Total cases reference scenario ###############################################
+###### Total cases reference scenario #####
 
 cases_ref <- p30_34m * pop_30_34m + p35_39m * pop_35_39m + p40_44m * pop_40_44m + p45_49m * pop_45_49m +
   p50_54m * pop_50_54m + p55_59m * pop_55_59m + p60_64m * pop_60_64m + p65_69m * pop_65_69m + p70_74m * pop_70_74m +
@@ -673,17 +648,16 @@ cases_ref <- p30_34m * pop_30_34m + p35_39m * pop_35_39m + p40_44m * pop_40_44m 
   p80_84w * pop_80_84w + p85w * pop_85w
 
 summary(cases_ref)
-# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-# 184.5   184.5   184.5   184.5   184.5   184.5 
 
-############################################# Fitting exposures males #################################################
 
-library(fitdistrplus)
-library(goftest)
+
+##### Fitting exposures males #####
+
+
 
 #Divide data into agegroups and fit exposure to distribution
 
-#risk of CRC = 0 for men 15-29 years
+#risk of SC = 0 for men 15-29 years
 
 #Age 30-34, male
 Proc30_34m <- subset(MeatDaily, agegroups=="30-34" & sex =="1", select = proc.meat)
@@ -1032,9 +1006,10 @@ ad.test(t2, pgamma, fit2_75_79m$estimate[1], fit2_75_79m$estimate[2])  #Anderson
 
 # gamma and lognormal equally good
 
-########################################### Fitting exposures females ####################################################
 
-#risk of CRC = 0 for women 15-19 years
+##### Fitting exposures females #####
+
+#risk of SC = 0 for women 15-19 years
 
 
 #Age 20-24, female
@@ -1107,7 +1082,7 @@ ad.test(t2, pgamma, fit2_25_29w$estimate[1], fit2_25_29w$estimate[2])  #Anderson
 
 
 
-#risk of CRC = 0 for women 30-39 years
+#risk of SC = 0 for women 30-39 years
 
 
 #Age 40-44, female
@@ -1390,7 +1365,7 @@ ad.test(t2, pgamma, fit2_75_79w$estimate[1], fit2_75_79w$estimate[2])  #Anderson
 # gamma has the best fit, but lognormal above 0.05
 
 
-####################################################### Scenario 1 ##############################################################
+##### Scenario 1 #####
 
 Scenario1 <- read.csv("Scenario1.csv") # Since we're considering processed meat as a whole, the results for this endpoint will be the same
 # for scenario 1,2,3,4
@@ -1398,26 +1373,10 @@ Scenario1 <- read.csv("Scenario1.csv") # Since we're considering processed meat 
 Alt_scenario <- Scenario1[,c(1:4,8:10)]
 setDT(Alt_scenario)[ , agegroups:= cut(age, breaks= agebreaks, right= FALSE, labels= agelabels)]
 
-#Description of total DHA exposure/kg bw (mean, sd, percentiles)
-mean(Alt_scenario$procmeat.new)
-#[1] 36.16598
-tapply(Alt_scenario$procmeat.new, Alt_scenario$agegroups, mean)
-# 15-19    20-24    25-29    30-34    35-39    40-44    45-49    50-54    55-59    60-64    65-69    70-74    75-79 
-# 36.27186 35.46460 33.58530 40.07829 34.57248 39.53144 38.60172 38.20167 38.39662 35.64664 32.14290 28.35512 48.38507
 
-tapply(Alt_scenario$procmeat.new, Alt_scenario$agegroups, sd)
-# 15-19    20-24    25-29    30-34    35-39    40-44    45-49    50-54    55-59    60-64    65-69    70-74    75-79 
-# 47.53353 44.48783 36.12948 41.62313 35.82119 35.52586 39.65641 38.54243 39.28144 34.18687 31.09633 31.05845 56.19542  
+##### Fitting exposures males #####
 
-tapply(Alt_scenario$procmeat.new, Alt_scenario$agegroups, quantile, prob = 0.90) #Same is done for P50 and P10
-# 15-19     20-24     25-29     30-34     35-39     40-44     45-49     50-54     55-59     60-64     65-69     70-74     75-79 
-# 85.22810  88.77476  90.45714  90.00000  81.44238  81.60257  91.28571  93.57095  89.92843  75.14286  70.31390  60.24943 106.42838 
-
-
-
-################################################ Fitting exposures males #############################################################
-
-#risk of CRC = 0 for men 15-29 years
+#risk of SC = 0 for men 15-29 years
 
 
 #Age 30-34, male
@@ -1767,10 +1726,11 @@ ad.test(t2, pgamma, fit2_alt_75_79m$estimate[1], fit2_alt_75_79m$estimate[2])  #
 
 # gamma and lognormal equally good
 
-########################################### Fitting exposures females ####################################################
+
+##### Fitting exposures females ######
 
 
-#risk of CRC = 0 for women 15-19 years
+#risk of SC = 0 for women 15-19 years
 
 #Age 20-24, female
 Proc20_24w <- subset(Alt_scenario, agegroups=="20-24" & sex =="2", select = procmeat.new)
@@ -1841,7 +1801,7 @@ ad.test(t2, pgamma, fit2_alt_25_29w$estimate[1], fit2_alt_25_29w$estimate[2])  #
 # gamma has the best fit but lognormal above 0.05
 
 
-#risk of CRC = 0 for women 30-39 years
+#risk of SC = 0 for women 30-39 years
 
 
 #Age 40-44, female
@@ -2124,14 +2084,14 @@ ad.test(t2, pgamma, fit2_alt_75_79w$estimate[1], fit2_alt_75_79w$estimate[2])  #
 # gamma and lognormal are equally good
 
 
-################################################ DALY calc males #####################################################
+##### DALY calc males #####
 
 max(MeatDaily$proc.meat)
 # [1] 467.1429
 
 # truncate at 500 g processed/day. Truncation did not change mean.
 
-# Incidence = 0 for 15-29 year old males
+# risk of SC = 0 for 15-29 year old males
 
 # Age 30-34, males
 
@@ -2659,7 +2619,7 @@ summary(DALY85totalm_alt)
 summary(DALY85totalm)
 
 
-################################################ DALY calc females #####################################################
+##### DALY calc females #####
 
 # Incidence = 0 for 15-19 and 30-39 yearold females
 
@@ -3203,7 +3163,7 @@ summary(DALY85totalw_alt)
 summary(DALY85totalw)
 
 
-######################################### Total DALYs Alt ############################################
+##### Total DALYs Alt #####
 
 DALYtotal_alt <- DALY30_34totalm_alt + DALY35_39totalm_alt +  DALY40_44totalm_alt + DALY45_49totalm_alt +
   DALY50_54totalm_alt + DALY55_59totalm_alt + DALY60_64totalm_alt + DALY65_69totalm_alt +  DALY70_74totalm_alt +
@@ -3214,7 +3174,7 @@ DALYtotal_alt <- DALY30_34totalm_alt + DALY35_39totalm_alt +  DALY40_44totalm_al
 
 summary(DALYtotal_alt)
 
-######################################### Total cases alternative scenario ##########################################
+##### Total cases alternative scenario #####
 
 cases_alt <- cases_30_34m + cases_35_39m + cases_40_44m + cases_45_49m + cases_50_54m + cases_55_59m + cases_60_64m +
   cases_65_69m + cases_70_74m + cases_75_79m + cases_80_84m + cases_85m +
@@ -3229,7 +3189,7 @@ summary(cases_alt)
 # 2.5%    181 0.495 157  175 182 182 182   182 183 1e+05    0
 # 97.5%   182 2.049 175  181 182 183 183   183 184 1e+05    0
 
-########################################## Extra number of cases ###################################################
+##### Extra number of cases #####
 
 cases_diff <- cases_alt - cases_ref
 
@@ -3303,14 +3263,11 @@ summary(dDALY_alt_proc_SC_100000)
 # 97.5%  -0.119 0.648 -2.78 -0.601 -0.0885 -0.0828 -0.0668 -0.0149 0.268 1e+05    0
 
 
-tDALY_ref_proc_SC_matrix <- apply(tDALY_ref_proc_SC, 2, function(x) x*1)
-tDALY_ref_proc_SC_unc <- tDALY_ref_proc_SC_matrix
+tDALY_ref_proc_SC_unc <- apply(tDALY_ref_proc_SC, 2, function(x) x*1)
+
 write.csv(tDALY_ref_proc_SC_unc, "tDALY_ref_proc_SC_unc.csv")
 
-# write.csv(tDALY_ref_proc_SC_matrix, "tDALY_ref_proc_SC.csv")
 
 tDALY_alt_proc_SC_matrix <- apply(tDALY_alt_proc_SC, 2, function(x) x*1)
 tDALY_alt_proc_SC_unc <- apply(tDALY_alt_proc_SC_matrix, 2, function(x) mean(x))
 write.csv(tDALY_alt_proc_SC_unc, "tDALY_alt_proc_SC_unc.csv")
-
-# write.csv(tDALY_alt_proc_SC_matrix, "tDALY_alt_proc_SC.csv")
