@@ -1,4 +1,4 @@
-setwd("/zhome/7f/8/57963/Case 1/Data")
+setwd("//dtu-storage/sthth/Documents/Case 1/Data")
 
 # memory.limit(200000)
 
@@ -683,105 +683,7 @@ library(goftest)
 
 #Divide data into agegroups and fit exposure to distribution
 
-# #Age 15-19, male
-# Proc15_19m <- subset(MeatDaily, agegroups=="15-19" & sex =="1", select = proc.meat)
-# 
-# #Probability of intake
-# probproc15_19m <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc15_19m==0)/length(Proc15_19m$proc.meat) #probability of zero consumption
-# pr.yes <- sum(Proc15_19m!=0)/length(Proc15_19m$proc.meat) #probability of consumption
-# probproc15_19m[1,] <- c(pr.no,pr.yes)
-# 
-# Proc15_19posm <- Proc15_19m[which(Proc15_19m!=0)]
-# Proc15_19posm <- as.vector(Proc15_19posm$proc.meat)
-# 
-# 
-# fit1_15_19m <- fitdist(Proc15_19posm, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc15_19posm
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_15_19m$estimate[1], sdlog=fit1_15_19m$estimate[2]), col="red", lty=1)
-# gofstat(fit1_15_19m, fitnames="lnorm") 
-# 
-# fit2_15_19m <- fitdist(Proc15_19posm, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc15_19posm
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=40)
-# lines(x, pgamma(x, fit2_15_19m$estimate[1], fit2_15_19m$estimate[2]), col="red", lty=1)
-# gofstat(fit2_15_19m, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_15_19m$estimate[1], fit1_15_19m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_15_19m$estimate[1], fit1_15_19m$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_15_19m$estimate[1], fit2_15_19m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_15_19m$estimate[1], fit2_15_19m$estimate[2])  #Anderson-Darling test
-# 
-# 
-# #Age 20-24, male
-# Proc20_24m <- subset(MeatDaily, agegroups=="20-24" & sex =="1", select = proc.meat)
-# 
-# #Probability of intake
-# probproc20_24m <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc20_24m==0)/length(Proc20_24m$proc.meat) #probability of zero consumption
-# pr.yes <- sum(Proc20_24m!=0)/length(Proc20_24m$proc.meat) #probability of consumption
-# probproc20_24m[1,] <- c(pr.no,pr.yes)
-# 
-# Proc20_24posm <- Proc20_24m[which(Proc20_24m!=0)]
-# Proc20_24posm <- as.vector(Proc20_24posm$proc.meat)
-# 
-# fit1_20_24m <- fitdist(Proc20_24posm, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc20_24posm
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_20_24m$estimate[1], sdlog=fit1_20_24m$estimate[2]), col="red", lty=1)
-# gofstat(fit1_20_24m, fitnames="lnorm") 
-# 
-# fit2_20_24m <- fitdist(Proc20_24posm, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc20_24posm
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=40)
-# lines(x, pgamma(x, fit2_20_24m$estimate[1], fit2_20_24m$estimate[2]), col="red", lty=1)
-# gofstat(fit2_20_24m, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_20_24m$estimate[1], fit1_20_24m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_20_24m$estimate[1], fit1_20_24m$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_20_24m$estimate[1], fit2_20_24m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_20_24m$estimate[1], fit2_20_24m$estimate[2])  #Anderson-Darling test
-# 
-# 
-# #Age 25-29, male
-# Proc25_29m <- subset(MeatDaily, agegroups=="25-29" & sex =="1", select = proc.meat)
-# 
-# #Probability of intake
-# probproc25_29m <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc25_29m==0)/length(Proc25_29m$proc.meat) #probability of zero consumption
-# pr.yes <- sum(Proc25_29m!=0)/length(Proc25_29m$proc.meat) #probability of consumption
-# probproc25_29m[1,] <- c(pr.no,pr.yes)
-# 
-# Proc25_29posm <- Proc25_29m[which(Proc25_29m!=0)]
-# Proc25_29posm <- as.vector(Proc25_29posm$proc.meat)
-# 
-# fit1_25_29m <- fitdist(Proc25_29posm, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc25_29posm
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_25_29m$estimate[1], sdlog=fit1_25_29m$estimate[2]), col="red", lty=1)
-# gofstat(fit1_25_29m, fitnames="lnorm") 
-# 
-# fit2_25_29m <- fitdist(Proc25_29posm, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc25_29posm
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=40)
-# lines(x, pgamma(x, fit2_25_29m$estimate[1], fit2_25_29m$estimate[2]), col="red", lty=1)
-# gofstat(fit2_25_29m, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_25_29m$estimate[1], fit1_25_29m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_25_29m$estimate[1], fit1_25_29m$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_25_29m$estimate[1], fit2_25_29m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_25_29m$estimate[1], fit2_25_29m$estimate[2])  #Anderson-Darling test
-
+#risk of CRC = 0 for men 15-29 years
 
 #Age 30-34, male
 Proc30_34m <- subset(MeatDaily, agegroups=="30-34" & sex =="1", select = proc.meat)
@@ -1132,42 +1034,8 @@ ad.test(t2, pgamma, fit2_75_79m$estimate[1], fit2_75_79m$estimate[2])  #Anderson
 
 ########################################### Fitting exposures females ####################################################
 
-#Divide data into agegroups and fit exposure to distribution
+#risk of CRC = 0 for women 15-19 years
 
-# #Age 15-19, female
-# Proc15_19w <- subset(MeatDaily, agegroups=="15-19" & sex =="2", select = proc.meat)
-# 
-# #Probability of intake
-# probproc15_19w <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc15_19w==0)/length(Proc15_19w$proc.meat) #probability of zero consumption
-# pr.yes <- sum(Proc15_19w!=0)/length(Proc15_19w$proc.meat) #probability of consumption
-# probproc15_19w[1,] <- c(pr.no,pr.yes)
-# 
-# Proc15_19posw <- Proc15_19w[which(Proc15_19w!=0)]
-# Proc15_19posw <- as.vector(Proc15_19posw$proc.meat)
-# 
-# 
-# fit1_15_19w <- fitdist(Proc15_19posw, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc15_19posw
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_15_19w$estimate[1], sdlog=fit1_15_19w$estimate[2]), col="red", lty=1)
-# gofstat(fit1_15_19w, fitnames="lnorm") 
-# 
-# fit2_15_19w <- fitdist(Proc15_19posw, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc15_19posw
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=90)
-# lines(x, pgamma(x, fit2_15_19w$estimate[1], fit2_15_19w$estimate[2]), col="red", lty=1)
-# gofstat(fit2_15_19w, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_15_19w$estimate[1], fit1_15_19w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_15_19w$estimate[1], fit1_15_19w$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_15_19w$estimate[1], fit2_15_19w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_15_19w$estimate[1], fit2_15_19w$estimate[2])  #Anderson-Darling test
-
-# gamma much better fit but lognormal is acceptable
 
 #Age 20-24, female
 Proc20_24w <- subset(MeatDaily, agegroups=="20-24" & sex =="2", select = proc.meat)
@@ -1237,73 +1105,10 @@ ad.test(t2, pgamma, fit2_25_29w$estimate[1], fit2_25_29w$estimate[2])  #Anderson
 
 # gamma has the best fit but lognormal above 0.05
 
-# #Age 30-34, female
-# Proc30_34w <- subset(MeatDaily, agegroups=="30-34" & sex =="2", select = proc.meat)
-# 
-# #Probability of intake
-# probproc30_34w <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc30_34w==0)/length(Proc30_34w$proc.meat) #probability of zero consumption
-# pr.yes <- sum(Proc30_34w!=0)/length(Proc30_34w$proc.meat) #probability of consumption
-# probproc30_34w[1,] <- c(pr.no,pr.yes)
-# 
-# Proc30_34posw <- Proc30_34w[which(Proc30_34w!=0)]
-# Proc30_34posw <- as.vector(Proc30_34posw$proc.meat)
-# 
-# fit1_30_34w <- fitdist(Proc30_34posw, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc30_34posw
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_30_34w$estimate[1], sdlog=fit1_30_34w$estimate[2]), col="red", lty=1)
-# gofstat(fit1_30_34w, fitnames="lnorm") 
-# 
-# fit2_30_34w <- fitdist(Proc30_34posw, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc30_34posw
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=90)
-# lines(x, pgamma(x, fit2_30_34w$estimate[1], fit2_30_34w$estimate[2]), col="red", lty=1)
-# gofstat(fit2_30_34w, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_30_34w$estimate[1], fit1_30_34w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_30_34w$estimate[1], fit1_30_34w$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_30_34w$estimate[1], fit2_30_34w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_30_34w$estimate[1], fit2_30_34w$estimate[2])  #Anderson-Darling test
-# 
-# # gamma has the best fit but lognormal above 0.05
-# 
-# #Age 35-39, female
-# Proc35_39w <- subset(MeatDaily, agegroups=="35-39" & sex =="2", select = proc.meat)
-# 
-# #Probability of intake
-# probproc35_39w <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc35_39w==0)/length(Proc35_39w$proc.meat) #probability of zero consumption
-# pr.yes <- sum(Proc35_39w!=0)/length(Proc35_39w$proc.meat) #probability of consumption
-# probproc35_39w[1,] <- c(pr.no,pr.yes)
-# 
-# Proc35_39posw <- Proc35_39w[which(Proc35_39w!=0)]
-# Proc35_39posw <- as.vector(Proc35_39posw$proc.meat)
-# 
-# fit1_35_39w <- fitdist(Proc35_39posw, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc35_39posw
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_35_39w$estimate[1], sdlog=fit1_35_39w$estimate[2]), col="red", lty=1)
-# gofstat(fit1_35_39w, fitnames="lnorm") 
-# 
-# fit2_35_39w <- fitdist(Proc35_39posw, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc35_39posw
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=90)
-# lines(x, pgamma(x, fit2_35_39w$estimate[1], fit2_35_39w$estimate[2]), col="red", lty=1)
-# gofstat(fit2_35_39w, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_35_39w$estimate[1], fit1_35_39w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_35_39w$estimate[1], fit1_35_39w$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_35_39w$estimate[1], fit2_35_39w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_35_39w$estimate[1], fit2_35_39w$estimate[2])  #Anderson-Darling test
-# 
-# # gamma has much better fit but lognormal still above 0.05
+
+
+#risk of CRC = 0 for women 30-39 years
+
 
 #Age 40-44, female
 Proc40_44w <- subset(MeatDaily, agegroups=="40-44" & sex =="2", select = proc.meat)
@@ -1612,107 +1417,8 @@ tapply(Alt_scenario$procmeat.new, Alt_scenario$agegroups, quantile, prob = 0.90)
 
 ################################################ Fitting exposures males #############################################################
 
-# #Age 15-19, male
-# Proc15_19m <- subset(Alt_scenario, agegroups=="15-19" & sex =="1", select = procmeat.new)
-# 
-# #Probability of intake
-# probproc_alt15_19m <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc15_19m==0)/length(Proc15_19m$procmeat.new) #probability of zero consumption
-# pr.yes <- sum(Proc15_19m!=0)/length(Proc15_19m$procmeat.new) #probability of consumption
-# probproc_alt15_19m[1,] <- c(pr.no,pr.yes)
-# 
-# Proc15_19posm <- Proc15_19m[which(Proc15_19m!=0)]
-# Proc15_19posm <- as.vector(Proc15_19posm$procmeat.new)
-# 
-# fit1_alt_15_19m <- fitdist(Proc15_19posm, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc15_19posm
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_alt_15_19m$estimate[1], sdlog=fit1_alt_15_19m$estimate[2]), col="red", lty=1)
-# gofstat(fit1_alt_15_19m, fitnames="lnorm") 
-# 
-# fit2_alt_15_19m <- fitdist(Proc15_19posm, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc15_19posm
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=40)
-# lines(x, pgamma(x, fit2_alt_15_19m$estimate[1], fit2_alt_15_19m$estimate[2]), col="red", lty=1)
-# gofstat(fit2_alt_15_19m, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_alt_15_19m$estimate[1], fit1_alt_15_19m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_alt_15_19m$estimate[1], fit1_alt_15_19m$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_alt_15_19m$estimate[1], fit2_alt_15_19m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_alt_15_19m$estimate[1], fit2_alt_15_19m$estimate[2])  #Anderson-Darling test
-# 
-# # gamma if fine but lognormal above 0.05
-# 
-# #Age 20-24, male
-# Proc20_24m <- subset(Alt_scenario, agegroups=="20-24" & sex =="1", select = procmeat.new)
-# 
-# #Probability of intake
-# probproc_alt20_24m <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc20_24m==0)/length(Proc20_24m$procmeat.new) #probability of zero consumption
-# pr.yes <- sum(Proc20_24m!=0)/length(Proc20_24m$procmeat.new) #probability of consumption
-# probproc_alt20_24m[1,] <- c(pr.no,pr.yes)
-# 
-# Proc20_24posm <- Proc20_24m[which(Proc20_24m!=0)]
-# Proc20_24posm <- as.vector(Proc20_24posm$procmeat.new)
-# 
-# fit1_alt_20_24m <- fitdist(Proc20_24posm, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc20_24posm
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_alt_20_24m$estimate[1], sdlog=fit1_alt_20_24m$estimate[2]), col="red", lty=1)
-# gofstat(fit1_alt_20_24m, fitnames="lnorm") 
-# 
-# fit2_alt_20_24m <- fitdist(Proc20_24posm, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc20_24posm
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=40)
-# lines(x, pgamma(x, fit2_alt_20_24m$estimate[1], fit2_alt_20_24m$estimate[2]), col="red", lty=1)
-# gofstat(fit2_alt_20_24m, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_alt_20_24m$estimate[1], fit1_alt_20_24m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_alt_20_24m$estimate[1], fit1_alt_20_24m$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_alt_20_24m$estimate[1], fit2_alt_20_24m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_alt_20_24m$estimate[1], fit2_alt_20_24m$estimate[2])  #Anderson-Darling test
-# 
-# # gamma very good but lognormal also above 0.05
-# 
-# #Age 25-29, male
-# Proc25_29m <- subset(Alt_scenario, agegroups=="25-29" & sex =="1", select = procmeat.new)
-# 
-# #Probability of intake
-# probproc_alt25_29m <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc25_29m==0)/length(Proc25_29m$procmeat.new) #probability of zero consumption
-# pr.yes <- sum(Proc25_29m!=0)/length(Proc25_29m$procmeat.new) #probability of consumption
-# probproc_alt25_29m[1,] <- c(pr.no,pr.yes)
-# 
-# Proc25_29posm <- Proc25_29m[which(Proc25_29m!=0)]
-# Proc25_29posm <- as.vector(Proc25_29posm$procmeat.new)
-# 
-# fit1_alt_25_29m <- fitdist(Proc25_29posm, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc25_29posm
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_alt_25_29m$estimate[1], sdlog=fit1_alt_25_29m$estimate[2]), col="red", lty=1)
-# gofstat(fit1_alt_25_29m, fitnames="lnorm") 
-# 
-# fit2_alt_25_29m <- fitdist(Proc25_29posm, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc25_29posm
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=40)
-# lines(x, pgamma(x, fit2_alt_25_29m$estimate[1], fit2_alt_25_29m$estimate[2]), col="red", lty=1)
-# gofstat(fit2_alt_25_29m, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_alt_25_29m$estimate[1], fit1_alt_25_29m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_alt_25_29m$estimate[1], fit1_alt_25_29m$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_alt_25_29m$estimate[1], fit2_alt_25_29m$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_alt_25_29m$estimate[1], fit2_alt_25_29m$estimate[2])  #Anderson-Darling test
+#risk of CRC = 0 for men 15-29 years
 
-# gamma has the best fit but lognormal above 0.05
 
 #Age 30-34, male
 Proc30_34m <- subset(Alt_scenario, agegroups=="30-34" & sex =="1", select = procmeat.new)
@@ -2064,39 +1770,7 @@ ad.test(t2, pgamma, fit2_alt_75_79m$estimate[1], fit2_alt_75_79m$estimate[2])  #
 ########################################### Fitting exposures females ####################################################
 
 
-# #Age 15-19, female
-# Proc15_19w <- subset(Alt_scenario, agegroups=="15-19" & sex =="2", select = procmeat.new)
-# 
-# #Probability of intake
-# probproc_alt15_19w <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc15_19w==0)/length(Proc15_19w$procmeat.new) #probability of zero consumption
-# pr.yes <- sum(Proc15_19w!=0)/length(Proc15_19w$procmeat.new) #probability of consumption
-# probproc_alt15_19w[1,] <- c(pr.no,pr.yes)
-# 
-# Proc15_19posw <- Proc15_19w[which(Proc15_19w!=0)]
-# Proc15_19posw <- as.vector(Proc15_19posw$procmeat.new)
-# 
-# fit1_alt_15_19w <- fitdist(Proc15_19posw, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc15_19posw
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_alt_15_19w$estimate[1], sdlog=fit1_alt_15_19w$estimate[2]), col="red", lty=1)
-# gofstat(fit1_alt_15_19w, fitnames="lnorm") 
-# 
-# fit2_alt_15_19w <- fitdist(Proc15_19posw, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc15_19posw
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=90)
-# lines(x, pgamma(x, fit2_alt_15_19w$estimate[1], fit2_alt_15_19w$estimate[2]), col="red", lty=1)
-# gofstat(fit2_alt_15_19w, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_alt_15_19w$estimate[1], fit1_alt_15_19w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_alt_15_19w$estimate[1], fit1_alt_15_19w$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_alt_15_19w$estimate[1], fit2_alt_15_19w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_alt_15_19w$estimate[1], fit2_alt_15_19w$estimate[2])  #Anderson-Darling test
-# 
-# #gamma much better fit, lognormal below 0.05 but above 0.01
+#risk of CRC = 0 for women 15-19 years
 
 #Age 20-24, female
 Proc20_24w <- subset(Alt_scenario, agegroups=="20-24" & sex =="2", select = procmeat.new)
@@ -2166,73 +1840,9 @@ ad.test(t2, pgamma, fit2_alt_25_29w$estimate[1], fit2_alt_25_29w$estimate[2])  #
 
 # gamma has the best fit but lognormal above 0.05
 
-# #Age 30-34, female
-# Proc30_34w <- subset(Alt_scenario, agegroups=="30-34" & sex =="2", select = procmeat.new)
-# 
-# #Probability of intake
-# probproc_alt30_34w <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc30_34w==0)/length(Proc30_34w$procmeat.new) #probability of zero consumption
-# pr.yes <- sum(Proc30_34w!=0)/length(Proc30_34w$procmeat.new) #probability of consumption
-# probproc_alt30_34w[1,] <- c(pr.no,pr.yes)
-# 
-# Proc30_34posw <- Proc30_34w[which(Proc30_34w!=0)]
-# Proc30_34posw <- as.vector(Proc30_34posw$procmeat.new)
-# 
-# fit1_alt_30_34w <- fitdist(Proc30_34posw, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc30_34posw
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_alt_30_34w$estimate[1], sdlog=fit1_alt_30_34w$estimate[2]), col="red", lty=1)
-# gofstat(fit1_alt_30_34w, fitnames="lnorm") 
-# 
-# fit2_alt_30_34w <- fitdist(Proc30_34posw, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc30_34posw
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=90)
-# lines(x, pgamma(x, fit2_alt_30_34w$estimate[1], fit2_alt_30_34w$estimate[2]), col="red", lty=1)
-# gofstat(fit2_alt_30_34w, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_alt_30_34w$estimate[1], fit1_alt_30_34w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_alt_30_34w$estimate[1], fit1_alt_30_34w$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_alt_30_34w$estimate[1], fit2_alt_30_34w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_alt_30_34w$estimate[1], fit2_alt_30_34w$estimate[2])  #Anderson-Darling test
-# 
-# # gamma has the best fit but lognormal above 0.05
 
-# #Age 35-39, female
-# Proc35_39w <- subset(Alt_scenario, agegroups=="35-39" & sex =="2", select = procmeat.new)
-# 
-# #Probability of intake
-# probproc_alt35_39w <- matrix(nrow=1,ncol=2) #create empty matrix
-# pr.no <- sum(Proc35_39w==0)/length(Proc35_39w$procmeat.new) #probability of zero consumption
-# pr.yes <- sum(Proc35_39w!=0)/length(Proc35_39w$procmeat.new) #probability of consumption
-# probproc_alt35_39w[1,] <- c(pr.no,pr.yes)
-# 
-# Proc35_39posw <- Proc35_39w[which(Proc35_39w!=0)]
-# Proc35_39posw <- as.vector(Proc35_39posw$procmeat.new)
-# 
-# fit1_alt_35_39w <- fitdist(Proc35_39posw, 'lnorm') #Fit lognormal distribution to intake amounts
-# t <- Proc35_39posw
-# plot(ecdf(t), lty=1)
-# x <- seq(0, 4000, length=1000)
-# lines(x, plnorm(x, meanlog=fit1_alt_35_39w$estimate[1], sdlog=fit1_alt_35_39w$estimate[2]), col="red", lty=1)
-# gofstat(fit1_alt_35_39w, fitnames="lnorm") 
-# 
-# fit2_alt_35_39w <- fitdist(Proc35_39posw, 'gamma') #Fit gamma distribution to intake amounts
-# t2 <- Proc35_39posw
-# plot(ecdf(t2), lty=1)
-# x <- seq(0, 2000, length=90)
-# lines(x, pgamma(x, fit2_alt_35_39w$estimate[1], fit2_alt_35_39w$estimate[2]), col="red", lty=1)
-# gofstat(fit2_alt_35_39w, fitnames="gamma") 
-# 
-# cvm.test(t, plnorm, fit1_alt_35_39w$estimate[1], fit1_alt_35_39w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t, plnorm, fit1_alt_35_39w$estimate[1], fit1_alt_35_39w$estimate[2])  #Anderson-Darling test
-# 
-# cvm.test(t2, pgamma, fit2_alt_35_39w$estimate[1], fit2_alt_35_39w$estimate[2])  #Cram?r-von Mises test
-# ad.test(t2, pgamma, fit2_alt_35_39w$estimate[1], fit2_alt_35_39w$estimate[2])  #Anderson-Darling test
-# 
-# # gamma has much better fit but lognormal still above 0.05
+#risk of CRC = 0 for women 30-39 years
+
 
 #Age 40-44, female
 Proc40_44w <- subset(Alt_scenario, agegroups=="40-44" & sex =="2", select = procmeat.new)
