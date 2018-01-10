@@ -3194,7 +3194,7 @@ summary(cases_diff)
 
 
 
-#######################################################################################################
+##### Per 100,000 #####
 
 pop15_85_plus <- pop_men + pop_women
 
@@ -3224,12 +3224,12 @@ dDALY_alt_proc_SC_100000 <- tDALY_alt_proc_SC_100000 - tDALY_ref_proc_SC_100000
 summary(dDALY_alt_proc_SC_100000)
 
 
+##### Save #####
 
-tDALY_ref_proc_SC_unc <- apply(tDALY_ref_proc_SC, 2, function(x) x*1)
-
+tDALY_ref_proc_SC_unc <- apply(tDALY_ref_proc_SC, 2, function(x) x*1) #get data out of mc2d
 write.csv(tDALY_ref_proc_SC_unc, "tDALY_ref_proc_SC_unc.csv")
 
 
-tDALY_alt_proc_SC_matrix <- apply(tDALY_alt_proc_SC, 2, function(x) x*1)
-tDALY_alt_proc_SC_unc <- apply(tDALY_alt_proc_SC_matrix, 2, function(x) mean(x))
+tDALY_alt_proc_SC_matrix <- apply(tDALY_alt_proc_SC, 2, function(x) x*1) #get data out of mc2d
+tDALY_alt_proc_SC_unc <- apply(tDALY_alt_proc_SC_matrix, 2, function(x) mean(x)) #only uncertainty dimension
 write.csv(tDALY_alt_proc_SC_unc, "tDALY_alt_proc_SC_unc.csv")
