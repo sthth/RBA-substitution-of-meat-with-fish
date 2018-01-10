@@ -2091,7 +2091,9 @@ max(MeatDaily$proc.meat)
 
 # truncate at 500 g processed/day. Truncation did not change mean.
 
+
 # risk of SC = 0 for 15-29 year old males
+
 
 # Age 30-34, males
 
@@ -2621,7 +2623,7 @@ summary(DALY85totalm)
 
 ##### DALY calc females #####
 
-# Incidence = 0 for 15-19 and 30-39 yearold females
+# risk of SC = 0 for 15-19 and 30-39 yearold females
 
 
 # Age 20-24, females
@@ -2718,9 +2720,9 @@ summary(DALY25_29totalw)
 
 
 
-# Age 30-34, females, incidence = 0
+# Age 30-34, females, risk of SC = 0
 
-# Age 35-39, females, incidence = 0
+# Age 35-39, females, risk of SC = 0
 
 
 # Age 40-44, females
@@ -3182,85 +3184,45 @@ cases_alt <- cases_30_34m + cases_35_39m + cases_40_44m + cases_45_49m + cases_5
   cases_65_69w + cases_70_74w + cases_75_79w + cases_80_84w + cases_85w
 
 summary(cases_alt)
-# node :
-#   mean    sd Min 2.5% 25% 50% 75% 97.5% Max   nsv Na's
-# median  182 1.336 164  178 182 182 182   183 183 1e+05    0
-# mean    182 1.321 164  178 182 182 182   183 183 1e+05    0
-# 2.5%    181 0.495 157  175 182 182 182   182 183 1e+05    0
-# 97.5%   182 2.049 175  181 182 183 183   183 184 1e+05    0
+
 
 ##### Extra number of cases #####
 
 cases_diff <- cases_alt - cases_ref
 
 summary(cases_diff)
-# node :
-#   mean    sd    Min  2.5%    25%    50%    75%   97.5%   Max   nsv Na's
-# median -1.007 1.336 -18.87 -5.15 -0.704 -0.665 -0.548 -0.1823 0.736 1e+05    0
-# mean   -0.998 1.321 -18.36 -5.10 -0.697 -0.658 -0.542 -0.1812 0.715 1e+05    0
-# 2.5%   -1.573 0.495 -25.81 -8.03 -1.088 -1.027 -0.852 -0.2949 0.328 1e+05    0
-# 97.5%  -0.363 2.049  -8.06 -1.86 -0.259 -0.243 -0.197 -0.0611 0.983 1e+05    0
+
 
 
 #######################################################################################################
 
 pop15_85_plus <- pop_men + pop_women
-# [1] 4697068
+
 
 tDALY_ref_proc_SC <- DALYtotalref
 summary(tDALY_ref_proc_SC)
-# node :
-#   NoVar
-# median  2517
-# mean    2517
-# 2.5%    2511
-# 97.5%   2522
+
 
 tDALY_alt_proc_SC <-DALYtotal_alt
 summary(tDALY_alt_proc_SC)
-# node :
-#   mean   sd  Min 2.5%  25%  50%  75% 97.5%  Max   nsv Na's
-# median 2501 20.0 2216 2439 2505 2506 2508  2515 2527 1e+05    0
-# mean   2501 19.8 2224 2439 2505 2506 2508  2515 2527 1e+05    0
-# 2.5%   2490  7.5 2109 2395 2496 2497 2500  2509 2520 1e+05    0
-# 97.5%  2513 30.4 2387 2490 2515 2515 2516  2520 2533 1e+05    0
+
 
 tDALY_ref_proc_SC_100000 <- tDALY_ref_proc_SC/pop15_85_plus*1e+05
 summary(tDALY_ref_proc_SC_100000)
-# node :
-#   NoVar
-# median  53.6
-# mean    53.6
-# 2.5%    53.5
-# 97.5%   53.7
+
 
 tDALY_alt_proc_SC_100000 <- tDALY_alt_proc_SC/pop15_85_plus*1e+05
 summary(tDALY_alt_proc_SC_100000)
-# node :
-#   mean    sd  Min 2.5%  25%  50%  75% 97.5%  Max   nsv Na's
-# median 53.2 0.427 47.2 51.9 53.3 53.4 53.4  53.5 53.8 1e+05    0
-# mean   53.2 0.421 47.4 51.9 53.3 53.3 53.4  53.5 53.8 1e+05    0
-# 2.5%   53.0 0.160 44.9 51.0 53.1 53.2 53.2  53.4 53.7 1e+05    0
-# 97.5%  53.5 0.648 50.8 53.0 53.5 53.5 53.6  53.7 53.9 1e+05    0
+
 
 
 dDALY_alt_proc_SC <- tDALY_alt_proc_SC - tDALY_ref_proc_SC
 summary(dDALY_alt_proc_SC)
-# node :
-#   mean   sd  Min   2.5%    25%    50%    75%  97.5%  Max   nsv Na's
-# median -15.6 20.0 -301  -78.1 -11.48 -10.77  -8.76 -1.916 10.7 1e+05    0
-# mean   -15.4 19.8 -292  -77.3 -11.37 -10.67  -8.67 -1.893 10.4 1e+05    0
-# 2.5%   -24.3  7.5 -408 -121.4 -17.93 -16.81 -13.69 -2.962  6.1 1e+05    0
-# 97.5%   -5.6 30.4 -131  -28.2  -4.16  -3.89  -3.14 -0.699 12.6 1e+05    0
+
 
 dDALY_alt_proc_SC_100000 <- tDALY_alt_proc_SC_100000 - tDALY_ref_proc_SC_100000
 summary(dDALY_alt_proc_SC_100000)
-# node :
-#   mean    sd   Min   2.5%     25%     50%     75%   97.5%   Max   nsv Na's
-# median -0.331 0.427 -6.41 -1.664 -0.2444 -0.2293 -0.1865 -0.0408 0.229 1e+05    0
-# mean   -0.328 0.421 -6.22 -1.646 -0.2421 -0.2271 -0.1847 -0.0403 0.221 1e+05    0
-# 2.5%   -0.518 0.160 -8.68 -2.585 -0.3818 -0.3580 -0.2914 -0.0631 0.130 1e+05    0
-# 97.5%  -0.119 0.648 -2.78 -0.601 -0.0885 -0.0828 -0.0668 -0.0149 0.268 1e+05    0
+
 
 
 tDALY_ref_proc_SC_unc <- apply(tDALY_ref_proc_SC, 2, function(x) x*1)
