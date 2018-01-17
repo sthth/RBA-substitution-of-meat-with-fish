@@ -192,6 +192,9 @@ dw_remission <- 0.2
 dw_disseminated <- mcstoc(rpert, type = "U", min=0.307, mode=0.451, max=0.6)
 dw_terminal <- mcstoc(rpert, type = "U", min=0.377, mode=0.54, max=0.687)
 
+#RR dose-response
+r <- mcstoc(rpert, type = "U", min = 0.0002, mode = 0.0036, max = 0.0076) #1.18, 95% CI: 1.01-1.38 converted to RR/g/day (WCRF/AICR CUP SLR 2015)
+
 
 ##### Ref scenario #####
 
@@ -2080,6 +2083,7 @@ ad.test(t2, pgamma, fit2_alt_75_79w$estimate[1], fit2_alt_75_79w$estimate[2])  #
 max(MeatDaily$proc.meat)
 # [1] 467.1429
 
+# Gamma distribution has the best fit for both the reference and alternative scenario
 # Truncate at 500 g processed/day to avoid extreme values. Truncation did not change mean.
 
 
@@ -2091,7 +2095,6 @@ max(MeatDaily$proc.meat)
 set.seed(1)
 ifexp <- mcstoc(rempiricalD, values = c(0,1), prob = c(probproc30_34m[,1],probproc30_34m[,2]))
 exp <- mcstoc(rgamma, type = "V", fit2_30_34m$estimate[1], fit2_30_34m$estimate[2], rtrunc = T, linf = 0, lsup = 500)
-r <- mcstoc(rpert, type = "U", min = 0.0002, mode = 0.0036, max = 0.0076) #1.18, 95% CI: 1.01-1.38 converted to RR/g/day
 RR_ref <- ifexp * exp * r + 1
 
 summary(RR_ref)
