@@ -836,7 +836,7 @@ cvm.test(t2, pgamma, fit2_75_84m$estimate[1], fit2_75_84m$estimate[2])  #Cram?r-
 ad.test(t2, pgamma, fit2_75_84m$estimate[1], fit2_75_84m$estimate[2])  #Anderson-Darling test
 
 
-#################################################### Fitting exposures females ####################################
+##### Fitting exposures females #####
 
 #Divide data into agegroups and fit exposure to distribution
 
@@ -1139,7 +1139,8 @@ cvm.test(t2, pgamma, fit2_75_84w$estimate[1], fit2_75_84w$estimate[2])  #Cram?r-
 ad.test(t2, pgamma, fit2_75_84w$estimate[1], fit2_75_84w$estimate[2])  #Anderson-Darling test
 
 
-################################################ Peffect ref males #############################################################
+###### Peffect ref males #####
+
 # calculate RR(ref) and Peffect(ref) for Peffect(alt) calc in alt scen
 
 #Prob = 0 for men, 15-19y
@@ -1437,8 +1438,7 @@ pEffect85m <- pIHD_85m/RR
 summary(pEffect85m)
 
 
-
-#################################################### Peffect ref females ########################################################
+##### Peffect ref females #####
 
 #Prob = 0 for women < 35
 
@@ -1461,9 +1461,7 @@ summary(RR)
 
 
 pEffect35_39w <- pIHD_35_39w/RR
-
-modelpEffect <- mc(pEffect35_39w)
-summary(modelpEffect)
+summary(pEffect35_39w)
 
 
 
@@ -1483,15 +1481,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect40_44w <- pIHD_40_44w/RR
-
-modelpEffect <- mc(pEffect40_44w)
-summary(modelpEffect)
+summary(pEffect40_44w)
 
 
 ### Age 45-49, females ###
@@ -1509,15 +1503,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect45_49w <- pIHD_45_49w/RR
-
-modelpEffect <- mc(pEffect45_49w)
-summary(modelpEffect)
+summary(pEffect45_49w)
 
 
 
@@ -1536,15 +1526,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect50_54w <- pIHD_50_54w/RR
-
-modelpEffect <- mc(pEffect50_54w)
-summary(modelpEffect)
+summary(pEffect50_54w)
 
 
 
@@ -1563,16 +1549,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect55_59w <- pIHD_55_59w/RR
-
-modelpEffect <- mc(pEffect55_59w)
-summary(modelpEffect)
-
+summary(pEffect55_59m)
 
 
 ### Age 60-64, females ###
@@ -1590,16 +1571,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect60_64w <- pIHD_60_64w/RR
-
-modelpEffect <- mc(pEffect60_64w)
-summary(modelpEffect)
-
+summary(pEffect60_64w)
 
 
 
@@ -1618,15 +1594,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect65_69w <- pIHD_65_69w/RR
-
-modelpEffect <- mc(pEffect65_69w)
-summary(modelpEffect)
+summary(pEffect65_69w)
 
 
 
@@ -1645,17 +1617,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect70_74w <- pIHD_70_74w/RR
-
-modelpEffect <- mc(pEffect70_74w)
-summary(modelpEffect)
-
-
+summary(pEffect70_74w)
 
 
 ### Age 75-79, females ###
@@ -1673,16 +1639,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect75_79w <- pIHD_75_79w/RR
-
-modelpEffect <- mc(pEffect75_79w)
-summary(modelpEffect)
-
+summary(pEffect75_79w)
 
 
 
@@ -1701,15 +1662,11 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect80_84w <- pIHD_80_84w/RR
-
-modelpEffect <- mc(pEffect80_84w)
-summary(modelpEffect)
+summary(pEffect80_84w)
 
 
 ### Age 85+, females ###
@@ -1727,17 +1684,14 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- ifexp * exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect85w <- pIHD_85w/RR
+summary(pEffect85w)
 
-modelpEffect <- mc(pEffect85w)
-summary(modelpEffect)
 
-#################################################### Cases ref ######################################################
+##### Cases ref #####
 
 cases_ref <- pIHD_20_24m * pop_20_24m + pIHD_30_34m * pop_30_34m + pIHD_35_39m * pop_35_39m + pIHD_40_44m * pop_40_44m +
   pIHD_45_49m * pop_45_49m + pIHD_50_54m * pop_50_54m + pIHD_55_59m * pop_55_59m + pIHD_60_64m * pop_60_64m +
@@ -1748,7 +1702,7 @@ cases_ref <- pIHD_20_24m * pop_20_24m + pIHD_30_34m * pop_30_34m + pIHD_35_39m *
   pIHD_75_79w * pop_75_79w + pIHD_80_84w * pop_80_84w + pIHD_85w * pop_85w
 
 
-################################################### Scenario 1 ##################################################################
+##### Scenario 1 #####
 
 Scenario1 <- read.csv("Scenario1.csv")
 # fish intakes are raw weights, ready for exposure assessment.
@@ -1756,13 +1710,6 @@ Scenario1 <- read.csv("Scenario1.csv")
 #Calculate DHA exposure from fish (mg/day)
 Scen1_DHA_EPA <- t(Scenario1[,c(55:70)]) #Create data set only with intakes of the different fish species
 Scen1_DHA_EPA <- t(Scen1_DHA_EPA * DHA_EPA_fish[1:16,]) ##Multiply intakes of fish species with MeHg conc of the different species to obtain dataset with MeHg exposures from the different species
-
-contr.scen1 <- colMeans(Scen1_DHA_EPA) #Mean daily DHA exposure in g/day
-
-barplot(contr.scen1, main = "DHA+EPA contribution (Scenario 1)", las=2,
-        names.arg=c("cod", "cod roe", "salmon", "shrimp", "crab", "mussels", "pollack", "tuna", "trout", "mackerel", "herring",
-                    "gr. hallibut", "plaice", "flounder", "pangasius", "eel"),
-        ylim = c(0,250), ylab = 'mg DHA+EPA/day') #Display mean daily DHA exposure in g/day - take both consumption and concentration into account
 
 
 Scenario1$DHA.EPA <- rowSums(Scen1_DHA_EPA) #Add sum of DHA exposures for each individual to the Scenario1.DHA dataset
@@ -1772,21 +1719,9 @@ Scenario1_CHD <- Scenario1[,c(1:4,54,71)]
 
 setDT(Scenario1_CHD)[ , agegroups:= cut(age, breaks= agebreaks, right= FALSE, labels= agelabels)]
 
-#Description of total DHA exposure/kg bw (mean, sd, percentiles)
-mean(Scenario1_CHD$DHA.EPA)
-
-tapply(Scenario1_CHD$DHA.EPA, Scenario1_CHD$agegroups, mean)
 
 
-tapply(Scenario1_CHD$DHA.EPA, Scenario1_CHD$agegroups, sd)
-
-
-
-tapply(Scenario1_CHD$DHA.EPA, Scenario1_CHD$agegroups, quantile, prob = 0.90) #Same is done for P50 and P10
-
-
-
-#################################################### Exposure males #############################################################
+###### Exposure males ######
 
 #Divide data into gender- and agegroups
 
@@ -1834,8 +1769,8 @@ DHA.EPA_70_74m <- as.vector(DHA.EPA_70_74m$DHA.EPA)
 DHA.EPA_75_79m <- subset(Scenario1_CHD, agegroups=="75-79" & sex=="1", select = DHA.EPA)
 DHA.EPA_75_79m <- as.vector(DHA.EPA_75_79m$DHA.EPA)
 
-###################################################### Exposure females #########################################################
 
+##### Exposure females #####
 
 #Age 35-39, female
 DHA.EPA_35_39w <- subset(Scenario1_CHD, agegroups=="35-39" & sex=="2", select = DHA.EPA)
@@ -1873,7 +1808,8 @@ DHA.EPA_70_74w <- as.vector(DHA.EPA_70_74w$DHA.EPA)
 DHA.EPA_75_79w <- subset(Scenario1_CHD, agegroups=="75-79" & sex=="2", select = DHA.EPA)
 DHA.EPA_75_79w <- as.vector(DHA.EPA_75_79w$DHA.EPA)
 
-##################################################### DALY scen 1 male #########################################################
+
+##### DALY scen 1 male #####
 
 #Prob = 0 for men, 15-19y
 
@@ -1891,18 +1827,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect20_24m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_20_24m <- pEffect * pop_20_24m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -1910,7 +1841,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_20_24scen1m <- pEffect*SEYLL_20_24
-
 summary(DALY_20_24scen1m)
 
 
@@ -1934,18 +1864,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect30_34m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_30_34m <- pEffect * pop_30_34m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -1953,7 +1878,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_30_34scen1m <- pEffect*SEYLL_30_34
-
 summary(DALY_30_34scen1m)
 
 
@@ -1975,18 +1899,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect35_39m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_35_39m <- pEffect * pop_35_39m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -1994,7 +1913,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_35_39scen1m <- pEffect*SEYLL_35_39
-
 summary(DALY_35_39scen1m)
 
 
@@ -2016,18 +1934,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect40_44m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_40_44m <- pEffect * pop_40_44m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2035,7 +1948,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_40_44scen1m <- pEffect*SEYLL_40_44
-
 summary(DALY_40_44scen1m)
 
 
@@ -2057,18 +1969,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect45_49m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_45_49m <- pEffect * pop_45_49m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2076,9 +1983,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_45_49scen1m <- pEffect*SEYLL_45_49
-
 summary(DALY_45_49scen1m)
-
 
 
 tDALY_45_49scen1m <- DALY_45_49scen1m * pop_45_49m 
@@ -2099,18 +2004,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect50_54m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_50_54m <- pEffect * pop_50_54m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2118,7 +2018,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_50_54scen1m <- pEffect*SEYLL_50_54
-
 summary(DALY_50_54scen1m)
 
 
@@ -2140,19 +2039,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 
 pEffect <- pEffect55_59m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_55_59m <- pEffect * pop_55_59m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2160,9 +2053,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_55_59scen1m <- pEffect*SEYLL_55_59
-
 summary(DALY_55_59scen1m)
-
 
 
 tDALY_55_59scen1m <- DALY_55_59scen1m * pop_55_59m 
@@ -2183,18 +2074,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect60_64m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_60_64m <- pEffect * pop_60_64m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2202,7 +2088,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_60_64scen1m <- pEffect*SEYLL_60_64
-
 summary(DALY_60_64scen1m)
 
 
@@ -2224,18 +2109,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect65_69m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_65_69m <- pEffect * pop_65_69m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2243,7 +2123,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_65_69scen1m <- pEffect*SEYLL_65_69
-
 summary(DALY_65_69scen1m)
 
 
@@ -2266,18 +2145,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect70_74m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_70_74m <- pEffect * pop_70_74m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2285,7 +2159,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_70_74scen1m <- pEffect*SEYLL_70_74
-
 summary(DALY_70_74scen1m)
 
 
@@ -2308,19 +2181,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect75_79m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_75_79m <- pEffect * pop_75_79m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2328,7 +2195,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_75_79scen1m <- pEffect*SEYLL_75_79
-
 summary(DALY_75_79scen1m)
 
 
@@ -2351,19 +2217,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect80_84m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_80_84m <- pEffect * pop_80_84m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2371,7 +2231,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_80_84scen1m <- pEffect*SEYLL_80_84
-
 summary(DALY_80_84scen1m)
 
 
@@ -2393,19 +2252,12 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 pEffect <- pEffect85m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_85m <- pEffect * pop_85m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2413,7 +2265,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_85scen1m <- pEffect*SEYLL_85
-
 summary(DALY_85scen1m)
 
 
@@ -2421,7 +2272,8 @@ tDALY_85scen1m <- DALY_85scen1m * pop_85m
 summary(tDALY_85scen1m)
 
 
-################################################ DALY scen 1 females ########################################################
+##### DALY scen 1 females #####
+
 
 ### Age 35-39, females ###
 
@@ -2437,18 +2289,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect35_39w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_35_39w <- pEffect * pop_35_39w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2456,7 +2303,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_35_39scen1w <- pEffect*SEYLL_35_39
-
 summary(DALY_35_39scen1w)
 
 
@@ -2478,18 +2324,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect40_44w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_40_44w <- pEffect * pop_40_44w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2497,9 +2338,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_40_44scen1w <- pEffect*SEYLL_40_44
-
 summary(DALY_40_44scen1w)
-
 
 
 tDALY_40_44scen1w <- DALY_40_44scen1w * pop_40_44w 
@@ -2520,17 +2359,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect45_49w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_45_49w <- pEffect * pop_45_49w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2538,10 +2373,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_45_49scen1w <- pEffect*SEYLL_45_49
-
 summary(DALY_45_49scen1w)
-
-
 
 
 tDALY_45_49scen1w <- DALY_45_49scen1w * pop_45_49w 
@@ -2562,19 +2394,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect50_54w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_50_54w <- pEffect * pop_50_54w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2582,7 +2408,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_50_54scen1w <- pEffect*SEYLL_50_54
-
 summary(DALY_50_54scen1w)
 
 
@@ -2604,20 +2429,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 
 pEffect <- pEffect55_59w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_55_59w <- pEffect * pop_55_59w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2625,7 +2443,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_55_59scen1w <- pEffect*SEYLL_55_59
-
 summary(DALY_55_59scen1w)
 
 
@@ -2648,18 +2465,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect60_64w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_60_64w <- pEffect * pop_60_64w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2667,7 +2479,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_60_64scen1w <- pEffect*SEYLL_60_64
-
 summary(DALY_60_64scen1w)
 
 
@@ -2689,17 +2500,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect65_69w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_65_69w <- pEffect * pop_65_69w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2707,7 +2514,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_65_69scen1w <- pEffect*SEYLL_65_69
-
 summary(DALY_65_69scen1w)
 
 
@@ -2730,18 +2536,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect70_74w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_70_74w <- pEffect * pop_70_74w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2749,9 +2550,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_70_74scen1w <- pEffect*SEYLL_70_74
-
 summary(DALY_70_74scen1w)
-
 
 
 tDALY_70_74scen1w <- DALY_70_74scen1w * pop_70_74w 
@@ -2772,19 +2571,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect75_79w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_75_79w <- pEffect * pop_75_79w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2792,7 +2585,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_75_79scen1w <- pEffect*SEYLL_75_79
-
 summary(DALY_75_79scen1w)
 
 
@@ -2814,20 +2606,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 
 pEffect <- pEffect80_84w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_80_84w <- pEffect * pop_80_84w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -2835,7 +2620,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_80_84scen1w <- pEffect*SEYLL_80_84
-
 summary(DALY_80_84scen1w)
 
 
@@ -2857,17 +2641,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect85w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_85w <- pEffect * pop_85w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 
@@ -2876,7 +2656,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_85scen1w <- pEffect*SEYLL_85
-
 summary(DALY_85scen1w)
 
 
@@ -2884,7 +2663,7 @@ tDALY_85scen1w <- DALY_85scen1w * pop_85w
 summary(tDALY_85scen1w)
 
 
-##################################################### Total DALY ################################################################
+##### Total DALY #####
 
 DALYtotal.CHD.scen1 <- tDALY_20_24scen1m + tDALY_30_34scen1m + tDALY_35_39scen1m + tDALY_40_44scen1m + tDALY_45_49scen1m + tDALY_45_49scen1m + tDALY_50_54scen1m + tDALY_55_59scen1m + 
   tDALY_60_64scen1m + tDALY_65_69scen1m + tDALY_70_74scen1m + tDALY_75_79scen1m + tDALY_80_84scen1m + tDALY_85scen1m +
@@ -2892,24 +2671,9 @@ DALYtotal.CHD.scen1 <- tDALY_20_24scen1m + tDALY_30_34scen1m + tDALY_35_39scen1m
   tDALY_60_64scen1w + tDALY_65_69scen1w + tDALY_70_74scen1w + tDALY_75_79scen1w + tDALY_80_84scen1w + tDALY_85scen1w
 
 summary(DALYtotal.CHD.scen1)
-# node :
-#   mean   sd   Min  2.5%   25%   50%   75% 97.5%   Max   nsv Na's
-# median 56923 3240 41821 49137 55793 57922 59158 60485 61001 1e+05    0
-# mean   56938 3220 41930 49215 55808 57929 59162 60484 61001 1e+05    0
-# 2.5%   55467 2172 35571 45446 53872 56754 58447 60274 61001 1e+05    0
-# 97.5%  58343 4269 48228 53016 57632 59028 59826 60674 61001 1e+05    0
-
-DALY100000.CHD.scen1 <- DALYtotal.CHD.scen1/(pop_men+pop_women)*10^5 
-summary(DALY100000.CHD.scen1) #NOTE: this is for the whole pop > 15y
-# node :
-#   mean   sd  Min 2.5%  25%  50%  75% 97.5%  Max   nsv Na's
-# median 1212 69.0  890 1046 1188 1233 1259  1288 1299 1e+05    0
-# mean   1212 68.6  893 1048 1188 1233 1260  1288 1299 1e+05    0
-# 2.5%   1181 46.2  757  968 1147 1208 1244  1283 1299 1e+05    0
-# 97.5%  1242 90.9 1027 1129 1227 1257 1274  1292 1299 1e+05    0
 
 
-############################################### Cases scenario 1 ######################################################
+##### Cases scenario 1 ######
 
 cases_scen1 <- cases_20_24m + cases_30_34m + cases_35_39m + cases_40_44m + cases_45_49m + cases_50_54m + cases_55_59m +
   cases_60_64m + cases_65_69m + cases_70_74m + cases_75_79m + cases_80_84m + cases_85m + 
@@ -2918,14 +2682,9 @@ cases_scen1 <- cases_20_24m + cases_30_34m + cases_35_39m + cases_40_44m + cases
 
 cases_diff_scen1 <- cases_scen1 - cases_ref
 summary(cases_diff_scen1)
-# node :
-#         mean  sd   Min 2.5%  25%  50%   75%  97.5%      Max   nsv Na's
-# median -174 167 -1091 -564 -282 -101 -51.2 -10.91 0.00e+00 1e+05    0
-# mean   -173 166 -1086 -562 -281 -101 -51.1 -10.89 4.41e-14 1e+05    0
-# 2.5%   -238 110 -1460 -760 -393 -139 -71.1 -15.30 0.00e+00 1e+05    0
-# 97.5%  -113 225  -721 -371 -178  -65 -32.6  -6.88 4.55e-13 1e+05    0
 
-################################################### Scenario 2 ##################################################################
+
+###### Scenario 2 ######
 
 Scenario2 <- read.csv("Scenario2.csv")
 # fish intakes are raw weights, ready for exposure assessment.
@@ -2933,12 +2692,6 @@ Scenario2 <- read.csv("Scenario2.csv")
 #Calculate DHA exposure from fish (mg/day)
 Scen2_DHA_EPA <- t(Scenario2[,c(55:60)]) #Create data set only with intakes of the different fish species
 Scen2_DHA_EPA <- t(Scen2_DHA_EPA * DHA_EPA_fish[c(3,9,10,11,12,16),]) ##Multiply intakes of fish species with MeHg conc of the different species to obtain dataset with MeHg exposures from the different species
-
-contr.Scen2 <- colMeans(Scen2_DHA_EPA) #Mean daily DHA exposure in g/day
-
-barplot(contr.Scen2, main = "DHA+EPA contribution (Scenario 2)", las=2,
-        names.arg=c("salmon", "trout", "mackerel", "herring", "gr. hallibut","eel"),
-        ylim = c(0,450), ylab = 'mg DHA+EPA/day') #Display mean daily DHA exposure in g/day - take both consumption and concentration into account
 
 
 Scenario2$DHA.EPA <- rowSums(Scen2_DHA_EPA) #Add sum of DHA exposures for each individual to the Scenario2.DHA dataset
@@ -2948,22 +2701,8 @@ Scenario2_CHD <- Scenario2[,c(1:4,54,61)]
 
 setDT(Scenario2_CHD)[ , agegroups:= cut(age, breaks= agebreaks, right= FALSE, labels= agelabels)]
 
-#Description of total DHA exposure/kg bw (mean, sd, percentiles)
-mean(Scenario2_CHD$DHA.EPA)
 
-tapply(Scenario2_CHD$DHA.EPA, Scenario2_CHD$agegroups, mean)
-
-
-tapply(Scenario2_CHD$DHA.EPA, Scenario2_CHD$agegroups, sd)
-
-
-
-tapply(Scenario2_CHD$DHA.EPA, Scenario2_CHD$agegroups, quantile, prob = 0.90) #Same is done for P50 and P10
-
-
-
-
-#################################################### Exposure males #############################################################
+##### Exposure males #####
 
 #Divide data into gender- and agegroups
 
@@ -3013,7 +2752,8 @@ DHA.EPA_70_74m <- as.vector(DHA.EPA_70_74m$DHA.EPA)
 DHA.EPA_75_79m <- subset(Scenario2_CHD, agegroups=="75-79" & sex=="1", select = DHA.EPA)
 DHA.EPA_75_79m <- as.vector(DHA.EPA_75_79m$DHA.EPA)
 
-###################################################### Exposure females #########################################################
+
+##### Exposure females #####
 
 #Prob = 0 for females > 35y
 
@@ -3053,7 +2793,8 @@ DHA.EPA_70_74w <- as.vector(DHA.EPA_70_74w$DHA.EPA)
 DHA.EPA_75_79w <- subset(Scenario2_CHD, agegroups=="75-79" & sex=="2", select = DHA.EPA)
 DHA.EPA_75_79w <- as.vector(DHA.EPA_75_79w$DHA.EPA)
 
-##################################################### DALY scen 2 male #########################################################
+
+##### DALY scen 2 male #####
 
 #Prob = 0 for men, 15-19y
 
@@ -3071,18 +2812,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect20_24m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_20_24m <- pEffect * pop_20_24m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3090,7 +2826,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_20_24scen2m <- pEffect*SEYLL_20_24
-
 summary(DALY_20_24scen2m)
 
 
@@ -3114,19 +2849,14 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect30_34m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_30_34m <- pEffect * pop_30_34m
 
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3134,7 +2864,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_30_34scen2m <- pEffect*SEYLL_30_34
-
 summary(DALY_30_34scen2m)
 
 
@@ -3156,19 +2885,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect35_39m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_35_39m <- pEffect * pop_35_39m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3176,7 +2899,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_35_39scen2m <- pEffect*SEYLL_35_39
-
 summary(DALY_35_39scen2m)
 
 
@@ -3198,25 +2920,20 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect40_44m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_40_44m <- pEffect * pop_40_44m
 
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
 #Final DALY equation: DALY = pEffect*(LE(a)-CA)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_40_44scen2m <- pEffect*SEYLL_40_44
-
 summary(DALY_40_44scen2m)
 
 
@@ -3238,18 +2955,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect45_49m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_45_49m <- pEffect * pop_45_49m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3257,7 +2969,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_45_49scen2m <- pEffect*SEYLL_45_49
-
 summary(DALY_45_49scen2m)
 
 
@@ -3279,18 +2990,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect50_54m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_50_54m <- pEffect * pop_50_54m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3298,7 +3004,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_50_54scen2m <- pEffect*SEYLL_50_54
-
 summary(DALY_50_54scen2m)
 
 
@@ -3320,18 +3025,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect55_59m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_55_59m <- pEffect * pop_55_59m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3339,7 +3039,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_55_59scen2m <- pEffect*SEYLL_55_59
-
 summary(DALY_55_59scen2m)
 
 
@@ -3361,18 +3060,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect60_64m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_60_64m <- pEffect * pop_60_64m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3380,7 +3074,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_60_64scen2m <- pEffect*SEYLL_60_64
-
 summary(DALY_60_64scen2m)
 
 
@@ -3402,19 +3095,14 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect65_69m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_65_69m <- pEffect * pop_65_69m
 
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3422,7 +3110,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_65_69scen2m <- pEffect*SEYLL_65_69
-
 summary(DALY_65_69scen2m)
 
 
@@ -3445,19 +3132,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect70_74m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_70_74m <- pEffect * pop_70_74m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3465,7 +3146,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_70_74scen2m <- pEffect*SEYLL_70_74
-
 summary(DALY_70_74scen2m)
 
 
@@ -3487,20 +3167,12 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 pEffect <- pEffect75_79m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_75_79m <- pEffect * pop_75_79m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3508,7 +3180,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_75_79scen2m <- pEffect*SEYLL_75_79
-
 summary(DALY_75_79scen2m)
 
 
@@ -3530,20 +3201,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect80_84m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_80_84m <- pEffect * pop_80_84m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3551,7 +3215,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_80_84scen2m <- pEffect*SEYLL_80_84
-
 summary(DALY_80_84scen2m)
 
 
@@ -3573,20 +3236,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect85m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_85m <- pEffect * pop_85m
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3594,7 +3250,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_85scen2m <- pEffect*SEYLL_85
-
 summary(DALY_85scen2m)
 
 
@@ -3621,19 +3276,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect35_39w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_35_39w <- pEffect * pop_35_39w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3641,10 +3290,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_35_39scen2w <- pEffect*SEYLL_35_39
-
 summary(DALY_35_39scen2w)
-
-
 
 
 tDALY_35_39scen2w <- DALY_35_39scen2w * pop_35_39w 
@@ -3665,19 +3311,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect40_44w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_40_44w <- pEffect * pop_40_44w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3685,9 +3325,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_40_44scen2w <- pEffect*SEYLL_40_44
-
 summary(DALY_40_44scen2w)
-
 
 
 tDALY_40_44scen2w <- DALY_40_44scen2w * pop_40_44w 
@@ -3708,18 +3346,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect45_49w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_45_49w <- pEffect * pop_45_49w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3727,7 +3360,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_45_49scen2w <- pEffect*SEYLL_45_49
-
 summary(DALY_45_49scen2w)
 
 
@@ -3749,19 +3381,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect50_54w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_50_54w <- pEffect * pop_50_54w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3769,7 +3395,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_50_54scen2w <- pEffect*SEYLL_50_54
-
 summary(DALY_50_54scen2w)
 
 
@@ -3791,18 +3416,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect55_59w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_55_59w <- pEffect * pop_55_59w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3810,7 +3430,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_55_59scen2w <- pEffect*SEYLL_55_59
-
 summary(DALY_55_59scen2w)
 
 
@@ -3832,19 +3451,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect60_64w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_60_64w <- pEffect * pop_60_64w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3852,7 +3465,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_60_64scen2w <- pEffect*SEYLL_60_64
-
 summary(DALY_60_64scen2w)
 
 
@@ -3874,26 +3486,19 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect65_69w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_65_69w <- pEffect * pop_65_69w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
 #Final DALY equation: DALY = pEffect*(LE(a)-CA)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_65_69scen2w <- pEffect*SEYLL_65_69
-
 summary(DALY_65_69scen2w)
 
 
@@ -3916,19 +3521,12 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 pEffect <- pEffect70_74w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_70_74w <- pEffect * pop_70_74w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3936,9 +3534,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_70_74scen2w <- pEffect*SEYLL_70_74
-
 summary(DALY_70_74scen2w)
-
 
 
 tDALY_70_74scen2w <- DALY_70_74scen2w * pop_70_74w 
@@ -3959,20 +3555,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect75_79w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_75_79w <- pEffect * pop_75_79w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -3980,7 +3569,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_75_79scen2w <- pEffect*SEYLL_75_79
-
 summary(DALY_75_79scen2w)
 
 
@@ -4003,20 +3591,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect80_84w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_80_84w <- pEffect * pop_80_84w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4024,7 +3605,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_80_84scen2w <- pEffect*SEYLL_80_84
-
 summary(DALY_80_84scen2w)
 
 
@@ -4046,20 +3626,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect85w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_85w <- pEffect * pop_85w
-
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4067,7 +3640,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_85scen2w <- pEffect*SEYLL_85
-
 summary(DALY_85scen2w)
 
 
@@ -4075,7 +3647,7 @@ tDALY_85scen2w <- DALY_85scen2w * pop_85w
 summary(tDALY_85scen2w)
 
 
-##################################################### Total DALY ################################################################
+##### Total DALY #####
 
 DALYtotal.CHD.scen2 <- tDALY_20_24scen2m + tDALY_30_34scen2m + tDALY_35_39scen2m + tDALY_40_44scen2m + tDALY_45_49scen2m +
   tDALY_45_49scen2m + tDALY_50_54scen2m + tDALY_55_59scen2m + tDALY_60_64scen2m + tDALY_65_69scen2m + tDALY_70_74scen2m +
@@ -4084,18 +3656,10 @@ DALYtotal.CHD.scen2 <- tDALY_20_24scen2m + tDALY_30_34scen2m + tDALY_35_39scen2m
   tDALY_75_79scen2w + tDALY_80_84scen2w + tDALY_85scen2w
 
 summary(DALYtotal.CHD.scen2)
-# node :
-#   mean   sd   Min  2.5%   25%   50%   75% 97.5%   Max   nsv Na's
-# median 56923 3240 41821 49137 55793 57922 59158 60485 61001 1e+05    0
-# mean   56938 3220 41930 49215 55808 57929 59162 60484 61001 1e+05    0
-# 2.5%   55467 2172 35571 45446 53872 56754 58447 60274 61001 1e+05    0
-# 97.5%  58343 4269 48228 53016 57632 59028 59826 60674 61001 1e+05    0
-
-DALY100000.CHD.scen2 <- DALYtotal.CHD.scen2/(pop_men+pop_women)*10^5
-summary(DALY100000.CHD.scen2)
 
 
-############################################### Cases scenario 2 ######################################################
+
+##### Cases scenario 2 #####
 
 cases_scen2 <- cases_20_24m + cases_30_34m + cases_35_39m + cases_40_44m + cases_45_49m + cases_50_54m + cases_55_59m +
   cases_60_64m + cases_65_69m + cases_70_74m + cases_75_79m + cases_80_84m + cases_85m + 
@@ -4104,15 +3668,10 @@ cases_scen2 <- cases_20_24m + cases_30_34m + cases_35_39m + cases_40_44m + cases
 
 cases_diff_scen2 <- cases_scen2 - cases_ref
 summary(cases_diff_scen2)
-# node :
-#   mean  sd   Min 2.5%  25%  50%   75%  97.5%      Max   nsv Na's
-# median -174 167 -1091 -564 -282 -101 -51.2 -10.91 0.00e+00 1e+05    0
-# mean   -173 166 -1086 -562 -281 -101 -51.1 -10.89 4.41e-14 1e+05    0
-# 2.5%   -238 110 -1460 -760 -393 -139 -71.1 -15.30 0.00e+00 1e+05    0
-# 97.5%  -113 225  -721 -371 -178  -65 -32.6  -6.88 4.55e-13 1e+05    0
 
 
-################################################### Scenario 3 ##################################################################
+
+##### Scenario 3 #####
 
 Scenario3 <- read.csv("Scenario3.csv")
 # fish intakes are raw weights, ready for exposure assessment.
@@ -4120,12 +3679,6 @@ Scenario3 <- read.csv("Scenario3.csv")
 #Calculate DHA exposure from fish (mg/day)
 Scen3_DHA_EPA <- t(Scenario3[,c(55:64)]) #Create data set only with intakes of the different fish species
 Scen3_DHA_EPA <- t(Scen3_DHA_EPA * DHA_EPA_fish[c(1,2,4,5,6,7,8,13,14,15),]) ##Multiply intakes of fish species with MeHg conc of the different species to obtain dataset with MeHg exposures from the different species
-
-contr.Scen3 <- colMeans(Scen3_DHA_EPA) #Mean daily DHA exposure in g/day
-
-barplot(contr.Scen3, main = "DHA+EPA contribution (Scenario 3)", las=2,
-        names.arg=c("Cod meat",	"Cod roe",	"Shrimps",	"Crab",	"Mussels",	"Pollack",	"Tuna",	"Plaice",	"Flounder",	"Pangasius"),
-        ylim = c(0,80), ylab = 'mg DHA+EPA/day') #Display mean daily DHA exposure in g/day - take both consumption and concentration into account
 
 
 Scenario3$DHA.EPA <- rowSums(Scen3_DHA_EPA) #Add sum of DHA exposures for each individual to the Scenario3.DHA dataset
@@ -4135,20 +3688,8 @@ Scenario3_CHD <- Scenario3[,c(1:4,54,65)]
 
 setDT(Scenario3_CHD)[ , agegroups:= cut(age, breaks= agebreaks, right= FALSE, labels= agelabels)]
 
-#Description of total DHA exposure/kg bw (mean, sd, percentiles)
-mean(Scenario3_CHD$DHA.EPA)
 
-tapply(Scenario3_CHD$DHA.EPA, Scenario3_CHD$agegroups, mean)
-
-
-tapply(Scenario3_CHD$DHA.EPA, Scenario3_CHD$agegroups, sd)
-
-
-tapply(Scenario3_CHD$DHA.EPA, Scenario3_CHD$agegroups, quantile, prob = 0.90) #Same is done for P50 and P90
-
-
-
-#################################################### Exposure males #############################################################
+##### Exposure males ######
 
 #Divide data into gender- and agegroups
 
@@ -4258,18 +3799,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect20_24m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_20_24m <- pEffect * pop_20_24m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4277,7 +3813,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_20_24scen3m <- pEffect*SEYLL_20_24
-
 summary(DALY_20_24scen3m)
 
 
@@ -4301,18 +3836,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect30_34m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_30_34m <- pEffect * pop_30_34m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4320,7 +3850,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_30_34scen3m <- pEffect*SEYLL_30_34
-
 summary(DALY_30_34scen3m)
 
 
@@ -4342,19 +3871,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect35_39m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_35_39m <- pEffect * pop_35_39m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4362,7 +3885,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_35_39scen3m <- pEffect*SEYLL_35_39
-
 summary(DALY_35_39scen3m)
 
 
@@ -4384,19 +3906,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect40_44m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_40_44m <- pEffect * pop_40_44m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4404,9 +3920,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_40_44scen3m <- pEffect*SEYLL_40_44
-
 summary(DALY_40_44scen3m)
-
 
 
 tDALY_40_44scen3m <- DALY_40_44scen3m * pop_40_44m 
@@ -4427,19 +3941,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect45_49m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_45_49m <- pEffect * pop_45_49m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4447,9 +3955,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_45_49scen3m <- pEffect*SEYLL_45_49
-
 summary(DALY_45_49scen3m)
-
 
 
 tDALY_45_49scen3m <- DALY_45_49scen3m * pop_45_49m 
@@ -4470,18 +3976,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect50_54m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_50_54m <- pEffect * pop_50_54m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4489,7 +3990,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_50_54scen3m <- pEffect*SEYLL_50_54
-
 summary(DALY_50_54scen3m)
 
 
@@ -4511,18 +4011,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect55_59m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_55_59m <- pEffect * pop_55_59m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4530,9 +4025,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_55_59scen3m <- pEffect*SEYLL_55_59
-
 summary(DALY_55_59scen3m)
-
 
 
 tDALY_55_59scen3m <- DALY_55_59scen3m * pop_55_59m 
@@ -4553,17 +4046,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect60_64m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_60_64m <- pEffect * pop_60_64m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4571,7 +4060,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_60_64scen3m <- pEffect*SEYLL_60_64
-
 summary(DALY_60_64scen3m)
 
 
@@ -4593,18 +4081,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect65_69m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_65_69m <- pEffect * pop_65_69m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4612,7 +4095,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_65_69scen3m <- pEffect*SEYLL_65_69
-
 summary(DALY_65_69scen3m)
 
 
@@ -4634,18 +4116,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect70_74m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_70_74m <- pEffect * pop_70_74m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4653,14 +4130,11 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_70_74scen3m <- pEffect*SEYLL_70_74
-
 summary(DALY_70_74scen3m)
 
 
 tDALY_70_74scen3m <- DALY_70_74scen3m * pop_70_74m 
 summary(tDALY_70_74scen3m)
-
-
 
 
 ### Age 75-79, males ###
@@ -4677,19 +4151,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect75_79m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_75_79m <- pEffect * pop_75_79m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4697,7 +4165,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_75_79scen3m <- pEffect*SEYLL_75_79
-
 summary(DALY_75_79scen3m)
 
 
@@ -4720,19 +4187,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect80_84m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_80_84m <- pEffect * pop_80_84m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4740,7 +4201,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_80_84scen3m <- pEffect*SEYLL_80_84
-
 summary(DALY_80_84scen3m)
 
 
@@ -4763,19 +4223,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect85m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_85m <- pEffect * pop_85m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4783,7 +4237,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_85scen3m <- pEffect*SEYLL_85
-
 summary(DALY_85scen3m)
 
 
@@ -4809,18 +4262,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect35_39w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_35_39w <- pEffect * pop_35_39w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4828,9 +4276,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_35_39scen3w <- pEffect*SEYLL_35_39
-
 summary(DALY_35_39scen3w)
-
 
 
 tDALY_35_39scen3w <- DALY_35_39scen3w * pop_35_39w
@@ -4851,18 +4297,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect40_44w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_40_44w <- pEffect * pop_40_44w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4870,9 +4311,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_40_44scen3w <- pEffect*SEYLL_40_44
-
 summary(DALY_40_44scen3w)
-
 
 
 tDALY_40_44scen3w <- DALY_40_44scen3w * pop_40_44w
@@ -4893,18 +4332,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect45_49w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_45_49w <- pEffect * pop_45_49w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4912,7 +4346,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_45_49scen3w <- pEffect*SEYLL_45_49
-
 summary(DALY_45_49scen3w)
 
 
@@ -4934,20 +4367,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 
 pEffect <- pEffect50_54w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_50_54w <- pEffect * pop_50_54w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4955,7 +4381,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_50_54scen3w <- pEffect*SEYLL_50_54
-
 summary(DALY_50_54scen3w)
 
 
@@ -4977,19 +4402,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect55_59w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_55_59w <- pEffect * pop_55_59w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -4997,7 +4416,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_55_59scen3w <- pEffect*SEYLL_55_59
-
 summary(DALY_55_59scen3w)
 
 
@@ -5019,18 +4437,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect60_64w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_60_64w <- pEffect * pop_60_64w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5038,7 +4451,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_60_64scen3w <- pEffect*SEYLL_60_64
-
 summary(DALY_60_64scen3w)
 
 
@@ -5060,17 +4472,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect65_69w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_65_69w <- pEffect * pop_65_69w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5100,19 +4508,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect70_74w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_70_74w <- pEffect * pop_70_74w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5120,9 +4522,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_70_74scen3w <- pEffect*SEYLL_70_74
-
 summary(DALY_70_74scen3w)
-
 
 
 tDALY_70_74scen3w <- DALY_70_74scen3w * pop_70_74w
@@ -5143,19 +4543,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect75_79w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_75_79w <- pEffect * pop_75_79w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5163,7 +4557,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_75_79scen3w <- pEffect*SEYLL_75_79
-
 summary(DALY_75_79scen3w)
 
 tDALY_75_79scen3w <- DALY_75_79scen3w * pop_75_79w
@@ -5183,17 +4576,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect80_84w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_80_84w <- pEffect * pop_80_84w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5201,7 +4590,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_80_84scen3w <- pEffect*SEYLL_80_84
-
 summary(DALY_80_84scen3w)
 
 tDALY_80_84scen3w <- DALY_80_84scen3w * pop_80_84w
@@ -5222,17 +4610,12 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 pEffect <- pEffect85w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_85w <- pEffect * pop_85w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5240,7 +4623,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_85scen3w <- pEffect*SEYLL_85
-
 summary(DALY_85scen3w)
 
 
@@ -5248,7 +4630,7 @@ tDALY_85scen3w <- DALY_85scen3w * pop_85w
 summary(tDALY_85scen3w)
 
 
-##################################################### Total DALY ################################################################
+##### Total DALY #####
 
 DALYtotal.CHD.scen3 <- tDALY_20_24scen3m + tDALY_30_34scen3m +tDALY_35_39scen3m + tDALY_40_44scen3m + tDALY_45_49scen3m + tDALY_45_49scen3m + tDALY_50_54scen3m + tDALY_55_59scen3m +
   tDALY_60_64scen3m + tDALY_65_69scen3m + tDALY_70_74scen3m + tDALY_75_79scen3m + tDALY_80_84scen3m + tDALY_85scen3m +
@@ -5257,10 +4639,8 @@ DALYtotal.CHD.scen3 <- tDALY_20_24scen3m + tDALY_30_34scen3m +tDALY_35_39scen3m 
 
 summary(DALYtotal.CHD.scen3)
 
-DALY100000.CHD.scen3 <- DALYtotal.CHD.scen3/(pop_men+pop_women)*10^5
-summary(DALY100000.CHD.scen3)
 
-############################################### Cases scenario 3 ######################################################
+##### Cases scenario 3 #####
 
 cases_scen3 <- cases_20_24m + cases_30_34m + cases_35_39m + cases_40_44m + cases_45_49m + cases_50_54m + cases_55_59m +
   cases_60_64m + cases_65_69m + cases_70_74m + cases_75_79m + cases_80_84m + cases_85m + 
@@ -5269,14 +4649,9 @@ cases_scen3 <- cases_20_24m + cases_30_34m + cases_35_39m + cases_40_44m + cases
 
 cases_diff_scen3 <- cases_scen3 - cases_ref
 summary(cases_diff_scen3)
-# node :
-#         mean  sd   Min 2.5%    25%   50%   75% 97.5% Max   nsv Na's
-# median  9.50 181  -958 -410 -103.4  74.0 137.0   226 278 1e+05    0
-# mean   12.14 181  -953 -407 -101.7  76.2 139.6   230 282 1e+05    0
-# 2.5%   -5.76 116 -1280 -535 -124.1  37.1  75.5   128 159 1e+05    0
-# 97.5%  45.69 252  -634 -276  -72.2 130.7 224.1   360 437 1e+05    0
 
-################################################### Scenario 4 ##################################################################
+
+##### Scenario 4 #####
 
 Scenario4 <- read.csv("Scenario4.csv")
 # fish intakes are raw weights, ready for exposure assessment.
@@ -5292,23 +4667,9 @@ Scenario4_CHD <- Scenario4[,c(1:4,54,56)]
 
 setDT(Scenario4_CHD)[ , agegroups:= cut(age, breaks= agebreaks, right= FALSE, labels= agelabels)]
 
-#Description of total DHA exposure/kg bw (mean, sd, percentiles)
-mean(Scenario4_CHD$DHA.EPA)
-
-tapply(Scenario4_CHD$DHA.EPA, Scenario4_CHD$agegroups, mean)
 
 
-tapply(Scenario4_CHD$DHA.EPA, Scenario4_CHD$agegroups, sd)
-
-
-tapply(Scenario4_CHD$DHA.EPA, Scenario4_CHD$agegroups, quantile, prob = 0.10) #Same is done for P50 and P90
-
-
-tapply(Scenario4_CHD$DHA.EPA, Scenario4_CHD$agegroups, quantile, prob = 0.90) #Same is done for P50 and P90
-
-
-
-#################################################### Exposure males #############################################################
+##### Exposure males #####
 
 #Divide data into gender- and agegroups
 
@@ -5360,7 +4721,8 @@ DHA.EPA_70_74m <- as.vector(DHA.EPA_70_74m$DHA.EPA)
 DHA.EPA_75_79m <- subset(Scenario4_CHD, agegroups=="75-79" & sex=="1", select = DHA.EPA)
 DHA.EPA_75_79m <- as.vector(DHA.EPA_75_79m$DHA.EPA)
 
-###################################################### Exposure females #########################################################
+
+###### Exposure females #####
 
 #Prob=0 for women<35
 
@@ -5400,7 +4762,8 @@ DHA.EPA_70_74w <- as.vector(DHA.EPA_70_74w$DHA.EPA)
 DHA.EPA_75_79w <- subset(Scenario4_CHD, agegroups=="75-79" & sex=="2", select = DHA.EPA)
 DHA.EPA_75_79w <- as.vector(DHA.EPA_75_79w$DHA.EPA)
 
-##################################################### DALY scen 4 male #########################################################
+
+###### DALY scen 4 male ######
 
 #Prob = 0 for men, 15-19y
 
@@ -5418,24 +4781,20 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect20_24m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_20_24m <- pEffect * pop_20_24m
 
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
 #Final DALY equation: DALY = pEffect*(LE(a)-CA)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_20_24scen4m <- pEffect*SEYLL_20_24
-
 summary(DALY_20_24scen4m)
 
 tDALY_20_24scen4m <- DALY_20_24scen4m * pop_20_24m 
@@ -5457,17 +4816,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect30_34m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_30_34m <- pEffect * pop_30_34m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5475,7 +4830,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_30_34scen4m <- pEffect*SEYLL_30_34
-
 summary(DALY_30_34scen4m)
 
 
@@ -5497,18 +4851,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect35_39m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_35_39m <- pEffect * pop_35_39m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5516,9 +4865,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_35_39scen4m <- pEffect*SEYLL_35_39
-
 summary(DALY_35_39scen4m)
-
 
 
 tDALY_35_39scen4m <- DALY_35_39scen4m * pop_35_39m 
@@ -5539,18 +4886,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect40_44m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_40_44m <- pEffect * pop_40_44m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5558,7 +4900,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_40_44scen4m <- pEffect*SEYLL_40_44
-
 summary(DALY_40_44scen4m)
 
 
@@ -5580,17 +4921,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect45_49m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_45_49m <- pEffect * pop_45_49m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5598,9 +4935,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_45_49scen4m <- pEffect*SEYLL_45_49
-
 summary(DALY_45_49scen4m)
-
 
 
 tDALY_45_49scen4m <- DALY_45_49scen4m * pop_45_49m 
@@ -5621,18 +4956,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect50_54m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_50_54m <- pEffect * pop_50_54m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5640,7 +4970,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_50_54scen4m <- pEffect*SEYLL_50_54
-
 summary(DALY_50_54scen4m)
 
 
@@ -5662,18 +4991,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect55_59m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_55_59m <- pEffect * pop_55_59m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5681,7 +5005,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_55_59scen4m <- pEffect*SEYLL_55_59
-
 summary(DALY_55_59scen4m)
 
 
@@ -5703,18 +5026,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect60_64m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_60_64m <- pEffect * pop_60_64m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5722,9 +5040,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_60_64scen4m <- pEffect*SEYLL_60_64
-
 summary(DALY_60_64scen4m)
-
 
 
 tDALY_60_64scen4m <- DALY_60_64scen4m * pop_60_64m 
@@ -5745,17 +5061,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect65_69m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_65_69m <- pEffect * pop_65_69m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5763,14 +5075,11 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_65_69scen4m <- pEffect*SEYLL_65_69
-
 summary(DALY_65_69scen4m)
 
 
 tDALY_65_69scen4m <- DALY_65_69scen4m * pop_65_69m 
 summary(tDALY_65_69scen4m)
-
-
 
 
 ### Age 70-74, males ###
@@ -5787,18 +5096,12 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 pEffect <- pEffect70_74m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_70_74m <- pEffect * pop_70_74m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5806,13 +5109,11 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_70_74scen4m <- pEffect*SEYLL_70_74
-
 summary(DALY_70_74scen4m)
 
 
 tDALY_70_74scen4m <- DALY_70_74scen4m * pop_70_74m 
 summary(tDALY_70_74scen4m)
-
 
 
 ### Age 75-79, males ###
@@ -5829,19 +5130,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect75_79m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_75_79m <- pEffect * pop_75_79m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5849,7 +5144,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_75_79scen4m <- pEffect*SEYLL_75_79
-
 summary(DALY_75_79scen4m)
 
 
@@ -5871,18 +5165,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect80_84m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_80_84m <- pEffect * pop_80_84m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5890,7 +5179,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_80_84scen4m <- pEffect*SEYLL_80_84
-
 summary(DALY_80_84scen4m)
 
 
@@ -5914,19 +5202,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect85m * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_85m <- pEffect * pop_85m
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5934,7 +5216,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_85scen4m <- pEffect*SEYLL_85
-
 summary(DALY_85scen4m)
 
 
@@ -5943,7 +5224,7 @@ summary(tDALY_85scen4m)
 
 
 
-################################################ DALY scen 4 females ########################################################
+##### DALY scen 4 females #####
 
 #Prob = 0 for women < 35
 
@@ -5961,17 +5242,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect35_39w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_35_39w <- pEffect * pop_35_39w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -5979,7 +5256,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_35_39scen4w <- pEffect*SEYLL_35_39
-
 summary(DALY_35_39scen4w)
 
 
@@ -6001,18 +5277,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect40_44w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_40_44w <- pEffect * pop_40_44w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6020,10 +5291,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_40_44scen4w <- pEffect*SEYLL_40_44
-
 summary(DALY_40_44scen4w)
-
-
 
 
 tDALY_40_44scen4w <- DALY_40_44scen4w * pop_40_44w
@@ -6044,18 +5312,14 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 
 pEffect <- pEffect45_49w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_45_49w <- pEffect * pop_45_49w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6063,9 +5327,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_45_49scen4w <- pEffect*SEYLL_45_49
-
 summary(DALY_45_49scen4w)
-
 
 
 tDALY_45_49scen4w <- DALY_45_49scen4w * pop_45_49w
@@ -6086,20 +5348,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 
 pEffect <- pEffect50_54w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_50_54w <- pEffect * pop_50_54w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6107,18 +5362,12 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_50_54scen4w <- pEffect*SEYLL_50_54
-
 summary(DALY_50_54scen4w)
 
 
 tDALY_50_54scen4w <- DALY_50_54scen4w * pop_50_54w
 summary(tDALY_50_54scen4w)
-# node :
-#   mean    sd Min 2.5% 25%  50%  75% 97.5%  Max   nsv Na's
-# median  843 146.3 516  604 700  873  989   989  989 10000    0
-# mean    848 149.1 515  604 699  883  998   998  998 10000    0
-# 2.5%    738  88.2 429  538 636  757  839   839  839 10000    0
-# 97.5%   971 226.6 596  665 755 1028 1193  1193 1193 10000    0
+
 
 ### Age 55-59, females ###
 
@@ -6134,18 +5383,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect55_59w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_55_59w <- pEffect * pop_55_59w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6153,7 +5397,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_55_59scen4w <- pEffect*SEYLL_55_59
-
 summary(DALY_55_59scen4w)
 
 
@@ -6175,18 +5418,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect60_64w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_60_64w <- pEffect * pop_60_64w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6194,7 +5432,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_60_64scen4w <- pEffect*SEYLL_60_64
-
 summary(DALY_60_64scen4w)
 
 
@@ -6216,17 +5453,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 pEffect <- pEffect65_69w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_65_69w <- pEffect * pop_65_69w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6234,7 +5467,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_65_69scen4w <- pEffect*SEYLL_65_69
-
 summary(DALY_65_69scen4w)
 
 
@@ -6257,19 +5489,14 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
+summary(RR)
 
 
 
 pEffect <- pEffect70_74w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_70_74w <- pEffect * pop_70_74w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
-
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6277,9 +5504,7 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_70_74scen4w <- pEffect*SEYLL_70_74
-
 summary(DALY_70_74scen4w)
-
 
 
 tDALY_70_74scen4w <- DALY_70_74scen4w * pop_70_74w
@@ -6300,18 +5525,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect75_79w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_75_79w <- pEffect * pop_75_79w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6319,7 +5539,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_75_79scen4w <- pEffect*SEYLL_75_79
-
 summary(DALY_75_79scen4w)
 
 
@@ -6343,18 +5562,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
+summary(RR)
 
 
 pEffect <- pEffect80_84w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_80_84w <- pEffect * pop_80_84w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6362,7 +5576,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_80_84scen4w <- pEffect*SEYLL_80_84
-
 summary(DALY_80_84scen4w)
 
 
@@ -6385,19 +5598,13 @@ for(i in 1:iters_var){
 exp <- mcstoc(rempiricalD, type = "V", values = exp_trunc)
 
 RR <- exp * r + 1
-
-modelRR <- mc(RR)
-summary(modelRR)
-
-
+summary(RR)
 
 
 pEffect <- pEffect85w * RR # new absolute risk: Peffect(ref)/RR(ref) * RR(alt)
+summary(pEffect)
 
 cases_85w <- pEffect * pop_85w
-
-modelpEffect <- mc(pEffect)
-summary(modelpEffect)
 
 
 #Prec = 0,  Pdie = 1, YLDdie = 0 therefore YLDdie*w = 0
@@ -6405,7 +5612,6 @@ summary(modelpEffect)
 #where LE(a) is the life expectancy at age a, and CA is the age of onset
 
 DALY_85scen4w <- pEffect*SEYLL_85
-
 summary(DALY_85scen4w)
 
 
@@ -6413,8 +5619,7 @@ tDALY_85scen4w <- DALY_85scen4w * pop_85w
 summary(tDALY_85scen4w)
 
 
-
-##################################################### Total DALY ################################################################
+##### Total DALY #####
 
 DALYtotal.CHD.scen4 <- tDALY_20_24scen4m + tDALY_30_34scen4m + tDALY_35_39scen4m + tDALY_40_44scen4m + tDALY_45_49scen4m + tDALY_45_49scen4m + tDALY_50_54scen4m + tDALY_55_59scen4m +
   tDALY_60_64scen4m + tDALY_65_69scen4m + tDALY_70_74scen4m + tDALY_75_79scen4m + tDALY_80_84scen4m + tDALY_85scen4m +
@@ -6424,7 +5629,7 @@ DALYtotal.CHD.scen4 <- tDALY_20_24scen4m + tDALY_30_34scen4m + tDALY_35_39scen4m
 summary(DALYtotal.CHD.scen4)
 
 
-############################################### Cases scenario 4 ######################################################
+##### Cases scenario 4 #####
 
 cases_scen4 <- cases_20_24m + cases_30_34m + cases_35_39m + cases_40_44m + cases_45_49m + cases_50_54m + cases_55_59m +
   cases_60_64m + cases_65_69m + cases_70_74m + cases_75_79m + cases_80_84m + cases_85m + 
@@ -6433,200 +5638,114 @@ cases_scen4 <- cases_20_24m + cases_30_34m + cases_35_39m + cases_40_44m + cases
 
 cases_diff_scen4 <- cases_scen4 - cases_ref
 summary(cases_diff_scen4)
-# node :
-#        mean  sd  Min   2.5% 25% 50%  75% 97.5%  Max   nsv Na's
-# median  563 231 -613  30.20 410 625  750   854  920 1e+05    0
-# mean    572 233 -610  36.15 418 634  761   866  933 1e+05    0
-# 2.5%    317 139 -824  -8.07 227 356  428   489  527 1e+05    0
-# 97.5%   901 345 -403 114.35 669 989 1184  1343 1447 1e+05    0
 
 
-#################################################################################################################################
 
-pop15_85_plus <- 4697068
+###### Scenario comparison #####
 
+##Total DALYs
 
 tDALY_ref_fish_CHD <- DALYtotal.CHD
 summary(tDALY_ref_fish_CHD)
-# 61000 
+
 
 tDALY_scen1_fish_CHD <- DALYtotal.CHD.scen1
 summary(tDALY_scen1_fish_CHD)
-# node :
-#   mean   sd   Min  2.5%   25%   50%   75% 97.5%   Max   nsv Na's
-# median 56887 3338 41486 48840 55636 57902 59195 60523 61046 1e+05    0
-# mean   57198 3372 41660 49076 55978 58236 59539 60896 61414 1e+05    0
-# 2.5%   47583 2617 35126 40792 46689 48380 49404 50471 50879 1e+05    0
-# 97.5%  68321 4286 49045 58251 66693 69559 71061 72835 73455 1e+05    0
+
 
 tDALY_scen2_fish_CHD <- DALYtotal.CHD.scen2
 summary(tDALY_scen2_fish_CHD)
-# node :
-#   mean   sd   Min  2.5%   25%   50%   75% 97.5%   Max   nsv Na's
-# median 56887 3338 41486 48840 55636 57902 59195 60523 61046 1e+05    0
-# mean   57198 3372 41660 49076 55978 58236 59539 60896 61414 1e+05    0
-# 2.5%   47583 2617 35126 40792 46689 48380 49404 50471 50879 1e+05    0
-# 97.5%  68321 4286 49045 58251 66693 69559 71061 72835 73455 1e+05    0
+
 
 tDALY_scen3_fish_CHD <- DALYtotal.CHD.scen3
 summary(tDALY_scen3_fish_CHD)
-# node :
-#   mean   sd   Min  2.5%   25%   50%   75% 97.5%   Max   nsv Na's
-# median 59845 3560 43348 50901 58522 60921 62275 63946 65511 1e+05    0
-# mean   60174 3588 43518 51090 58836 61210 62641 64360 65896 1e+05    0
-# 2.5%   51288 2885 37370 43198 50178 52057 53246 54811 56464 1e+05    0
-# 97.5%  70313 4442 50316 59875 68827 71870 73462 75280 76700 1e+05    0
 
 
 tDALY_scen4_fish_CHD <- DALYtotal.CHD.scen4
 summary(tDALY_scen4_fish_CHD)
-# node :
-#   mean   sd   Min  2.5%   25%   50%   75% 97.5%   Max   nsv Na's
-# median 68840 4297 48464 57512 66972 69798 71774 74295 76398 1e+05    0
-# mean   69044 4315 48607 57676 67213 70059 72082 74621 76638 1e+05    0
-# 2.5%   61965 3680 43502 51590 60314 62721 64690 67275 69310 1e+05    0
-# 97.5%  77041 5072 54233 64526 75000 78269 80360 82961 84970 1e+05    0
 
 
-tDALY_ref_fish_CHD_10000 <- tDALY_ref_fish_CHD/pop15_85_plus*1e+04
-summary(tDALY_ref_fish_CHD_10000)
-# 129.9
+##Per 100,000
 
-tDALY_scen1_fish_CHD_10000 <- tDALY_scen1_fish_CHD/pop15_85_plus*1e+04
-summary(tDALY_scen1_fish_CHD_10000)
-# node :
-#   mean   sd   Min  2.5%   25% 50% 75% 97.5% Max   nsv Na's
-# median  121 7.11  88.3 104.0 118.4 123 126   129 130 1e+05    0
-# mean    122 7.18  88.7 104.5 119.2 124 127   130 131 1e+05    0
-# 2.5%    101 5.57  74.8  86.8  99.4 103 105   107 108 1e+05    0
-# 97.5%   145 9.12 104.4 124.0 142.0 148 151   155 156 1e+05    0
+pop15_85_plus <- 4697068 #Danish population >= 15 y
 
-tDALY_scen2_fish_CHD_10000 <- tDALY_scen2_fish_CHD/pop15_85_plus*1e+04
-summary(tDALY_scen2_fish_CHD_10000)
-# node :
-#   mean   sd   Min  2.5%   25% 50% 75% 97.5% Max   nsv Na's
-# median  121 7.11  88.3 104.0 118.4 123 126   129 130 1e+05    0
-# mean    122 7.18  88.7 104.5 119.2 124 127   130 131 1e+05    0
-# 2.5%    101 5.57  74.8  86.8  99.4 103 105   107 108 1e+05    0
-# 97.5%   145 9.12 104.4 124.0 142.0 148 151   155 156 1e+05    0
+tDALY_ref_fish_CHD_100000 <- tDALY_ref_fish_CHD/pop15_85_plus*1e+05
+summary(tDALY_ref_fish_CHD_100000)
 
-tDALY_scen3_fish_CHD_10000 <- tDALY_scen3_fish_CHD/pop15_85_plus*1e+04
-summary(tDALY_scen3_fish_CHD_10000)
-# node :
-#   mean   sd   Min 2.5% 25% 50% 75% 97.5% Max   nsv Na's
-# median  127 7.58  92.3  108 125 130 133   136 139 1e+05    0
-# mean    128 7.64  92.7  109 125 130 133   137 140 1e+05    0
-# 2.5%    109 6.14  79.6   92 107 111 113   117 120 1e+05    0
-# 97.5%   150 9.46 107.1  127 147 153 156   160 163 1e+05    0
 
-tDALY_scen4_fish_CHD_10000 <- tDALY_scen4_fish_CHD/pop15_85_plus*1e+04
-summary(tDALY_scen4_fish_CHD_10000)
-# node :
-#   mean    sd   Min 2.5% 25% 50% 75% 97.5% Max   nsv Na's
-# median  147  9.15 103.2  122 143 149 153   158 163 1e+05    0
-# mean    147  9.19 103.5  123 143 149 153   159 163 1e+05    0
-# 2.5%    132  7.83  92.6  110 128 134 138   143 148 1e+05    0
-# 97.5%   164 10.80 115.5  137 160 167 171   177 181 1e+05    0
+tDALY_scen1_fish_CHD_100000 <- tDALY_scen1_fish_CHD/pop15_85_plus*1e+05
+summary(tDALY_scen1_fish_CHD_100000)
 
+
+tDALY_scen2_fish_CHD_100000 <- tDALY_scen2_fish_CHD/pop15_85_plus*1e+05
+summary(tDALY_scen2_fish_CHD_100000)
+
+
+tDALY_scen3_fish_CHD_100000 <- tDALY_scen3_fish_CHD/pop15_85_plus*1e+05
+summary(tDALY_scen3_fish_CHD_100000)
+
+
+tDALY_scen4_fish_CHD_100000 <- tDALY_scen4_fish_CHD/pop15_85_plus*1e+05
+summary(tDALY_scen4_fish_CHD_100000)
+
+
+##Total DALY difference
 
 dDALY_scen1_fish_CHD <- tDALY_scen1_fish_CHD - tDALY_ref_fish_CHD
 summary(dDALY_scen1_fish_CHD)
-# node :
-#   mean   sd    Min   2.5%   25%   50%   75% 97.5%       Max   nsv Na's
-# median -4078 3240 -19179 -11864 -5208 -3078 -1842  -516  0.00e+00 1e+05    0
-# mean   -4063 3220 -19071 -11786 -5193 -3072 -1839  -516 -9.09e-13 1e+05    0
-# 2.5%   -5533 2172 -25430 -15555 -7129 -4247 -2554  -727 -7.28e-12 1e+05    0
-# 97.5%  -2658 4269 -12773  -7985 -3369 -1972 -1175  -326  0.00e+00 1e+05    0
+
 
 dDALY_scen2_fish_CHD <- tDALY_scen2_fish_CHD - tDALY_ref_fish_CHD
 summary(dDALY_scen2_fish_CHD)
-# node :
-#   mean   sd    Min   2.5%   25%   50%   75% 97.5%       Max   nsv Na's
-# median -4078 3240 -19179 -11864 -5208 -3078 -1842  -516  0.00e+00 1e+05    0
-# mean   -4063 3220 -19071 -11786 -5193 -3072 -1839  -516 -9.09e-13 1e+05    0
-# 2.5%   -5533 2172 -25430 -15555 -7129 -4247 -2554  -727 -7.28e-12 1e+05    0
-# 97.5%  -2658 4269 -12773  -7985 -3369 -1972 -1175  -326  0.00e+00 1e+05    0
+
 
 dDALY_scen3_fish_CHD <- tDALY_scen3_fish_CHD - tDALY_ref_fish_CHD
 summary(dDALY_scen3_fish_CHD)
-# node :
-#   mean   sd    Min   2.5%    25%   50%   75% 97.5%   Max   nsv Na's
-# median -1156 3560 -17653 -10099  -2479   -80  1274  2946  4510 1e+05    0
-# mean    -827 3588 -17482  -9911  -2164   209  1640  3359  4896 1e+05    0
-# 2.5%   -9713 2885 -23631 -17803 -10823 -8943 -7754 -6189 -4536 1e+05    0
-# 97.5%   9313 4442 -10685  -1126   7827 10869 12462 14279 15700 1e+05    0
+
 
 dDALY_scen4_fish_CHD <- tDALY_scen4_fish_CHD - tDALY_ref_fish_CHD
 summary(dDALY_scen4_fish_CHD)
-# node :
-#   mean   sd    Min  2.5%   25%   50%   75% 97.5%   Max   nsv Na's
-# median  7839 4297 -12537 -3489  5971  8797 10773 13294 15397 1e+05    0
-# mean    8043 4315 -12394 -3324  6212  9058 11081 13620 15637 1e+05    0
-# 2.5%     964 3680 -17499 -9411  -686  1720  3690  6274  8310 1e+05    0
-# 97.5%  16041 5072  -6768  3525 13999 17269 19359 21960 23969 1e+05    0
 
 
+##DALY difference per 100,000
 
-dDALY_scen1_fish_CHD_10000 <- tDALY_scen1_fish_CHD_10000 - tDALY_ref_fish_CHD_10000
-summary(dDALY_scen1_fish_CHD_10000)
-# node :
-#   mean   sd   Min  2.5%    25%   50%   75%  97.5%       Max   nsv Na's
-# median  -8.68 6.90 -40.8 -25.3 -11.09 -6.55 -3.92 -1.099  0.00e+00 1e+05    0
-# mean    -8.65 6.86 -40.6 -25.1 -11.06 -6.54 -3.91 -1.099 -1.94e-15 1e+05    0
-# 2.5%   -11.78 4.62 -54.1 -33.1 -15.18 -9.04 -5.44 -1.547 -1.55e-14 1e+05    0
-# 97.5%   -5.66 9.09 -27.2 -17.0  -7.17 -4.20 -2.50 -0.695  0.00e+00 1e+05    0
+dDALY_scen1_fish_CHD_100000 <- tDALY_scen1_fish_CHD_100000 - tDALY_ref_fish_CHD_100000
+summary(dDALY_scen1_fish_CHD_100000)
 
-dDALY_scen2_fish_CHD_10000 <- tDALY_scen2_fish_CHD_10000 - tDALY_ref_fish_CHD_10000
-summary(dDALY_scen2_fish_CHD_10000)
-# node :
-#   mean   sd   Min   2.5%   25%    50%    75%   97.5%      Max   nsv Na's
-# median  -8.76 7.11 -41.5 -25.89 -11.4  -6.60  -3.84  -1.016   0.0969 1e+05    0
-# mean    -8.10 7.18 -41.2 -25.39 -10.7  -5.89  -3.11  -0.223   0.8797 1e+05    0
-# 2.5%   -28.57 5.57 -55.1 -43.02 -30.5 -26.87 -24.69 -22.417 -21.5484 1e+05    0
-# 97.5%   15.59 9.12 -25.5  -5.85  12.1  18.22  21.42  25.194  26.5162 1e+05    0
 
-dDALY_scen3_fish_CHD_10000 <- tDALY_scen3_fish_CHD_10000 - tDALY_ref_fish_CHD_10000
-summary(dDALY_scen3_fish_CHD_10000)
-# node :
-#   mean   sd   Min  2.5%    25%     50%    75%  97.5%   Max   nsv Na's
-# median  -2.46 7.58 -37.6 -21.5  -5.28  -0.170   2.71   6.27  9.60 1e+05    0
-# mean    -1.76 7.64 -37.2 -21.1  -4.61   0.445   3.49   7.15 10.42 1e+05    0
-# 2.5%   -20.68 6.14 -50.3 -37.9 -23.04 -19.040 -16.51 -13.18 -9.66 1e+05    0
-# 97.5%   19.83 9.46 -22.7  -2.4  16.66  23.140  26.53  30.40 33.42 1e+05    0
+dDALY_scen2_fish_CHD_100000 <- tDALY_scen2_fish_CHD_100000 - tDALY_ref_fish_CHD_100000
+summary(dDALY_scen2_fish_CHD_100000)
 
-dDALY_scen4_fish_CHD_10000 <- tDALY_scen4_fish_CHD_10000 - tDALY_ref_fish_CHD_10000
-summary(dDALY_scen4_fish_CHD_10000)
-# node :
-#   mean    sd   Min   2.5%   25%   50%   75% 97.5%  Max   nsv Na's
-# median 16.69  9.15 -26.7  -7.43 12.71 18.73 22.94  28.3 32.8 1e+05    0
-# mean   17.12  9.19 -26.4  -7.08 13.23 19.28 23.59  29.0 33.3 1e+05    0
-# 2.5%    2.05  7.83 -37.3 -20.04 -1.46  3.66  7.86  13.4 17.7 1e+05    0
-# 97.5%  34.15 10.80 -14.4   7.51 29.80 36.76 41.21  46.8 51.0 1e+05    0
 
+dDALY_scen3_fish_CHD_100000 <- tDALY_scen3_fish_CHD_100000 - tDALY_ref_fish_CHD_100000
+summary(dDALY_scen3_fish_CHD_100000)
+
+
+dDALY_scen4_fish_CHD_100000 <- tDALY_scen4_fish_CHD_100000 - tDALY_ref_fish_CHD_100000
+summary(dDALY_scen4_fish_CHD_100000)
+
+
+##### Save #####
 
 tDALY_ref_fish_CHD_matrix <- tDALY_ref_fish_CHD
 write.csv(tDALY_ref_fish_CHD_matrix, "tDALY_ref_fish_CHD.csv")
 
-tDALY_scen1_fish_CHD_matrix <- apply(tDALY_scen1_fish_CHD, 2, function(x) x*1)
-tDALY_scen1_fish_CHD_unc <- apply(tDALY_scen1_fish_CHD_matrix, 2, function(x) mean(x))
+tDALY_scen1_fish_CHD_matrix <- apply(tDALY_scen1_fish_CHD, 2, function(x) x*1) #get data out of mc2d
+tDALY_scen1_fish_CHD_unc <- apply(tDALY_scen1_fish_CHD_matrix, 2, function(x) mean(x)) #only uncertainty dimension
 write.csv(tDALY_scen1_fish_CHD_unc, "tDALY_scen1_fish_CHD_unc.csv")
 
-# write.csv(tDALY_scen1_fish_CHD_matrix, "tDALY_scen1_fish_CHD.csv")
 
 tDALY_scen2_fish_CHD_matrix <- apply(tDALY_scen2_fish_CHD, 2, function(x) x*1)
 tDALY_scen2_fish_CHD_unc <- apply(tDALY_scen2_fish_CHD_matrix, 2, function(x) mean(x))
 write.csv(tDALY_scen2_fish_CHD_unc, "tDALY_scen2_fish_CHD_unc.csv")
 
-# write.csv(tDALY_scen2_fish_CHD_matrix, "tDALY_scen2_fish_CHD.csv")
 
 tDALY_scen3_fish_CHD_matrix <- apply(tDALY_scen3_fish_CHD, 2, function(x) x*1)
 tDALY_scen3_fish_CHD_unc <- apply(tDALY_scen3_fish_CHD_matrix, 2, function(x) mean(x))
 write.csv(tDALY_scen3_fish_CHD_unc, "tDALY_scen3_fish_CHD_unc.csv")
 
-# write.csv(tDALY_scen3_fish_CHD_matrix, "tDALY_scen3_fish_CHD.csv")
 
 tDALY_scen4_fish_CHD_matrix <- apply(tDALY_scen4_fish_CHD, 2, function(x) x*1)
 tDALY_scen4_fish_CHD_unc <- apply(tDALY_scen4_fish_CHD_matrix, 2, function(x) mean(x))
 write.csv(tDALY_scen4_fish_CHD_unc, "tDALY_scen4_fish_CHD_unc.csv")
 
-# write.csv(tDALY_scen4_fish_CHD_matrix, "tDALY_scen4_fish_CHD.csv")
