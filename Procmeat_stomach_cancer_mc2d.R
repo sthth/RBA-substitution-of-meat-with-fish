@@ -1,6 +1,3 @@
-setwd("//dtu-storage/sthth/Documents/Case 1/Data")
-
-
 #packages
 library(data.table)
 library(mc2d)
@@ -9,8 +6,8 @@ library(goftest)
 
 
 #settings
-iters_var <- 100000
-iters_unc <- 1000
+iters_var <- 1e+05
+iters_unc <- 1e+03
 
 ndvar(iters_var)
 ndunc(iters_unc)
@@ -199,7 +196,7 @@ dw_terminal <- mcstoc(rpert, type = "U", min=0.377, mode=0.54, max=0.687)
 ##### Ref scenario #####
 
 FoodDaily <- read.csv("FoodDaily.csv")
-MeatDaily <- FoodDaily[, c(1:4,34,45,58)]
+MeatDaily <- FoodDaily[, c(1:4,34,45,58)] #meat consumption
 
 agebreaks <- c(15,20,25,30,35,40,45,50,55,60,65,70,75,80)
 agelabels= c("15-19","20-24","25-29","30-34","35-39", "40-44", "45-49", "50-54","55-59", "60-64","65-69", "70-74","75-79")
@@ -209,7 +206,7 @@ setDT(MeatDaily)[ , agegroups:= cut(age, breaks= agebreaks, right= FALSE, labels
 
 ##### DALY calc males #####
 
-# Zero incidence for males 15-29 years of age
+# risk of SC = 0 for males 15-29 years of age
 
 #Age 30-34, males
 
@@ -419,7 +416,7 @@ DALY85totalm <- DALY * pop_85m
 
 ##### DALY calc females #####
 
-# Zero incidence for females 15-19 and 30-39 years of age
+# risk of SC = 0 for females 15-19 and 30-39 years of age
 
 #Age 20-24, females
 
@@ -626,6 +623,7 @@ DALY <- YLL + YLD
 
 DALY85totalw <- DALY * pop_85w
 
+
 ###### Total DALYs ref #####
 
 DALYtotalref <- DALY30_34totalm + DALY35_39totalm +  DALY40_44totalm + DALY45_49totalm + DALY50_54totalm +
@@ -691,7 +689,7 @@ ad.test(t, plnorm, fit1_30_34m$estimate[1], fit1_30_34m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_30_34m$estimate[1], fit2_30_34m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_30_34m$estimate[1], fit2_30_34m$estimate[2])  #Anderson-Darling test
 
-# gamma has a bit better fit that lognormal
+
 
 #Age 35-39, male
 Proc35_39m <- subset(MeatDaily, agegroups=="35-39" & sex =="1", select = proc.meat)
@@ -725,7 +723,7 @@ ad.test(t, plnorm, fit1_35_39m$estimate[1], fit1_35_39m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_35_39m$estimate[1], fit2_35_39m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_35_39m$estimate[1], fit2_35_39m$estimate[2])  #Anderson-Darling test
 
-# gamma has much better fit but lognormal still ok
+
 
 #Age 40-44, male
 Proc40_44m <- subset(MeatDaily, agegroups=="40-44" & sex =="1", select = proc.meat)
@@ -760,7 +758,7 @@ ad.test(t, plnorm, fit1_40_44m$estimate[1], fit1_40_44m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_40_44m$estimate[1], fit2_40_44m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_40_44m$estimate[1], fit2_40_44m$estimate[2])  #Anderson-Darling test
 
-# gamma, lognormal below 0.05 but above 0.01
+
 
 #Age 45-49, male
 Proc45_49m <- subset(MeatDaily, agegroups=="45-49" & sex =="1", select = proc.meat)
@@ -795,7 +793,7 @@ ad.test(t, plnorm, fit1_45_49m$estimate[1], fit1_45_49m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_45_49m$estimate[1], fit2_45_49m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_45_49m$estimate[1], fit2_45_49m$estimate[2])  #Anderson-Darling test
 
-# gamma has much better fit but lognormal above 0.05
+
 
 #Age 50-54, male
 Proc50_54m <- subset(MeatDaily, agegroups=="50-54" & sex =="1", select = proc.meat)
@@ -831,7 +829,7 @@ ad.test(t, plnorm, fit1_50_54m$estimate[1], fit1_50_54m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_50_54m$estimate[1], fit2_50_54m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_50_54m$estimate[1], fit2_50_54m$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal below 0.05 but above 0.01
+
 
 #Age 55-59, male
 Proc55_59m <- subset(MeatDaily, agegroups=="55-59" & sex =="1", select = proc.meat)
@@ -867,7 +865,7 @@ ad.test(t, plnorm, fit1_55_59m$estimate[1], fit1_55_59m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_55_59m$estimate[1], fit2_55_59m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_55_59m$estimate[1], fit2_55_59m$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal above 0.05
+
 
 #Age 60-64, male
 Proc60_64m <- subset(MeatDaily, agegroups=="60-64" & sex =="1", select = proc.meat)
@@ -902,7 +900,7 @@ ad.test(t, plnorm, fit1_60_64m$estimate[1], fit1_60_64m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_60_64m$estimate[1], fit2_60_64m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_60_64m$estimate[1], fit2_60_64m$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit but lognormal above 0.05
+
 
 #Age 65-69, male
 Proc65_69m <- subset(MeatDaily, agegroups=="65-69" & sex =="1", select = proc.meat)
@@ -936,7 +934,7 @@ ad.test(t, plnorm, fit1_65_69m$estimate[1], fit1_65_69m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_65_69m$estimate[1], fit2_65_69m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_65_69m$estimate[1], fit2_65_69m$estimate[2])  #Anderson-Darling test
 
-#  gamma has a much better fit but lognormal above 0.05
+
 
 #Age 70-74, male
 Proc70_74m <- subset(MeatDaily, agegroups=="70-74" & sex =="1", select = proc.meat)
@@ -970,7 +968,7 @@ ad.test(t, plnorm, fit1_70_74m$estimate[1], fit1_70_74m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_70_74m$estimate[1], fit2_70_74m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_70_74m$estimate[1], fit2_70_74m$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit but lognormal above 0.05
+
 
 #Age 75-79, male
 Proc75_79m <- subset(MeatDaily, agegroups=="75-79" & sex =="1", select = proc.meat)
@@ -1004,7 +1002,6 @@ ad.test(t, plnorm, fit1_75_79m$estimate[1], fit1_75_79m$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_75_79m$estimate[1], fit2_75_79m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_75_79m$estimate[1], fit2_75_79m$estimate[2])  #Anderson-Darling test
 
-# gamma and lognormal equally good
 
 
 ##### Fitting exposures females #####
@@ -1044,7 +1041,7 @@ ad.test(t, plnorm, fit1_20_24w$estimate[1], fit1_20_24w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_20_24w$estimate[1], fit2_20_24w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_20_24w$estimate[1], fit2_20_24w$estimate[2])  #Anderson-Darling test
 
-# lognormal very good but gamma also above 0.05
+
 
 #Age 25-29, female
 Proc25_29w <- subset(MeatDaily, agegroups=="25-29" & sex =="2", select = proc.meat)
@@ -1077,9 +1074,6 @@ ad.test(t, plnorm, fit1_25_29w$estimate[1], fit1_25_29w$estimate[2])  #Anderson-
 
 cvm.test(t2, pgamma, fit2_25_29w$estimate[1], fit2_25_29w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_25_29w$estimate[1], fit2_25_29w$estimate[2])  #Anderson-Darling test
-
-# gamma has the best fit but lognormal above 0.05
-
 
 
 #risk of SC = 0 for women 30-39 years
@@ -1118,7 +1112,7 @@ ad.test(t, plnorm, fit1_40_44w$estimate[1], fit1_40_44w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_40_44w$estimate[1], fit2_40_44w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_40_44w$estimate[1], fit2_40_44w$estimate[2])  #Anderson-Darling test
 
-# gamma, lognormal above 0.05
+
 
 #Age 45-49, female
 Proc45_49w <- subset(MeatDaily, agegroups=="45-49" & sex =="2", select = proc.meat)
@@ -1153,7 +1147,7 @@ ad.test(t, plnorm, fit1_45_49w$estimate[1], fit1_45_49w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_45_49w$estimate[1], fit2_45_49w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_45_49w$estimate[1], fit2_45_49w$estimate[2])  #Anderson-Darling test
 
-# gamma has much better fit but lognormal above 0.05
+
 
 #Age 50-54, female
 Proc50_54w <- subset(MeatDaily, agegroups=="50-54" & sex =="2", select = proc.meat)
@@ -1189,7 +1183,7 @@ ad.test(t, plnorm, fit1_50_54w$estimate[1], fit1_50_54w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_50_54w$estimate[1], fit2_50_54w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_50_54w$estimate[1], fit2_50_54w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal above 0.05
+
 
 #Age 55-59, female
 Proc55_59w <- subset(MeatDaily, agegroups=="55-59" & sex =="2", select = proc.meat)
@@ -1225,7 +1219,7 @@ ad.test(t, plnorm, fit1_55_59w$estimate[1], fit1_55_59w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_55_59w$estimate[1], fit2_55_59w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_55_59w$estimate[1], fit2_55_59w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal above 0.05
+
 
 #Age 60-64, female
 Proc60_64w <- subset(MeatDaily, agegroups=="60-64" & sex =="2", select = proc.meat)
@@ -1260,7 +1254,7 @@ ad.test(t, plnorm, fit1_60_64w$estimate[1], fit1_60_64w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_60_64w$estimate[1], fit2_60_64w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_60_64w$estimate[1], fit2_60_64w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit but lognormal above 0.05
+
 
 #Age 65-69, female
 Proc65_69w <- subset(MeatDaily, agegroups=="65-69" & sex =="2", select = proc.meat)
@@ -1294,7 +1288,7 @@ ad.test(t, plnorm, fit1_65_69w$estimate[1], fit1_65_69w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_65_69w$estimate[1], fit2_65_69w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_65_69w$estimate[1], fit2_65_69w$estimate[2])  #Anderson-Darling test
 
-# gamma has a much better fit but lognormal above 0.05
+
 
 #Age 70-74, female
 Proc70_74w <- subset(MeatDaily, agegroups=="70-74" & sex =="2", select = proc.meat)
@@ -1328,7 +1322,7 @@ ad.test(t, plnorm, fit1_70_74w$estimate[1], fit1_70_74w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_70_74w$estimate[1], fit2_70_74w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_70_74w$estimate[1], fit2_70_74w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit but lognormal above 0.05
+
 
 #Age 75-79, female
 Proc75_79w <- subset(MeatDaily, agegroups=="75-79" & sex =="2", select = proc.meat)
@@ -1362,7 +1356,6 @@ ad.test(t, plnorm, fit1_75_79w$estimate[1], fit1_75_79w$estimate[2])  #Anderson-
 cvm.test(t2, pgamma, fit2_75_79w$estimate[1], fit2_75_79w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_75_79w$estimate[1], fit2_75_79w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, but lognormal above 0.05
 
 
 ##### Scenario 1 #####
@@ -1411,7 +1404,7 @@ ad.test(t, plnorm, fit1_alt_30_34m$estimate[1], fit1_alt_30_34m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_30_34m$estimate[1], fit2_alt_30_34m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_30_34m$estimate[1], fit2_alt_30_34m$estimate[2])  #Anderson-Darling test
 
-# gamma has a bit better fit that lognormal
+
 
 #Age 35-39, male
 Proc35_39m <- subset(Alt_scenario, agegroups=="35-39" & sex =="1", select = procmeat.new)
@@ -1445,7 +1438,7 @@ ad.test(t, plnorm, fit1_alt_35_39m$estimate[1], fit1_alt_35_39m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_35_39m$estimate[1], fit2_alt_35_39m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_35_39m$estimate[1], fit2_alt_35_39m$estimate[2])  #Anderson-Darling test
 
-# gamma has much better fit but lognormal still above 0.05
+
 
 #Age 40-44, male
 Proc40_44m <- subset(Alt_scenario, agegroups=="40-44" & sex =="1", select = procmeat.new)
@@ -1480,7 +1473,7 @@ ad.test(t, plnorm, fit1_alt_40_44m$estimate[1], fit1_alt_40_44m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_40_44m$estimate[1], fit2_alt_40_44m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_40_44m$estimate[1], fit2_alt_40_44m$estimate[2])  #Anderson-Darling test
 
-# gamma, lognormal above 0.05
+
 
 #Age 45-49, male
 Proc45_49m <- subset(Alt_scenario, agegroups=="45-49" & sex =="1", select = procmeat.new)
@@ -1515,7 +1508,7 @@ ad.test(t, plnorm, fit1_alt_45_49m$estimate[1], fit1_alt_45_49m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_45_49m$estimate[1], fit2_alt_45_49m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_45_49m$estimate[1], fit2_alt_45_49m$estimate[2])  #Anderson-Darling test
 
-# gamma has much better fit but lognormal above 0.05
+
 
 #Age 50-54, male
 Proc50_54m <- subset(Alt_scenario, agegroups=="50-54" & sex =="1", select = procmeat.new)
@@ -1551,7 +1544,7 @@ ad.test(t, plnorm, fit1_alt_50_54m$estimate[1], fit1_alt_50_54m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_50_54m$estimate[1], fit2_alt_50_54m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_50_54m$estimate[1], fit2_alt_50_54m$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal around 0.05 but above 0.01
+
 
 #Age 55-59, male
 Proc55_59m <- subset(Alt_scenario, agegroups=="55-59" & sex =="1", select = procmeat.new)
@@ -1587,7 +1580,7 @@ ad.test(t, plnorm, fit1_alt_55_59m$estimate[1], fit1_alt_55_59m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_55_59m$estimate[1], fit2_alt_55_59m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_55_59m$estimate[1], fit2_alt_55_59m$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal above 0.05
+
 
 #Age 60-64, male
 Proc60_64m <- subset(Alt_scenario, agegroups=="60-64" & sex =="1", select = procmeat.new)
@@ -1622,7 +1615,7 @@ ad.test(t, plnorm, fit1_alt_60_64m$estimate[1], fit1_alt_60_64m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_60_64m$estimate[1], fit2_alt_60_64m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_60_64m$estimate[1], fit2_alt_60_64m$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit but lognormal above 0.05
+
 
 #Age 65-69, male
 Proc65_69m <- subset(Alt_scenario, agegroups=="65-69" & sex =="1", select = procmeat.new)
@@ -1656,7 +1649,7 @@ ad.test(t, plnorm, fit1_alt_65_69m$estimate[1], fit1_alt_65_69m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_65_69m$estimate[1], fit2_alt_65_69m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_65_69m$estimate[1], fit2_alt_65_69m$estimate[2])  #Anderson-Darling test
 
-# gamma has a much better fit but lognormal above 0.05
+
 
 #Age 70-74, male
 Proc70_74m <- subset(Alt_scenario, agegroups=="70-74" & sex =="1", select = procmeat.new)
@@ -1690,7 +1683,7 @@ ad.test(t, plnorm, fit1_alt_70_74m$estimate[1], fit1_alt_70_74m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_70_74m$estimate[1], fit2_alt_70_74m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_70_74m$estimate[1], fit2_alt_70_74m$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal below 0.05 but above 0.01
+
 
 #Age 75-79, male
 Proc75_79m <- subset(Alt_scenario, agegroups=="75-79" & sex =="1", select = procmeat.new)
@@ -1724,7 +1717,7 @@ ad.test(t, plnorm, fit1_alt_75_79m$estimate[1], fit1_alt_75_79m$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_75_79m$estimate[1], fit2_alt_75_79m$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_75_79m$estimate[1], fit2_alt_75_79m$estimate[2])  #Anderson-Darling test
 
-# gamma and lognormal equally good
+
 
 
 ##### Fitting exposures females ######
@@ -1764,7 +1757,7 @@ ad.test(t, plnorm, fit1_alt_20_24w$estimate[1], fit1_alt_20_24w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_20_24w$estimate[1], fit2_alt_20_24w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_20_24w$estimate[1], fit2_alt_20_24w$estimate[2])  #Anderson-Darling test
 
-#lognormal very good but gamma also above 0.05
+
 
 #Age 25-29, female
 Proc25_29w <- subset(Alt_scenario, agegroups=="25-29" & sex =="2", select = procmeat.new)
@@ -1798,7 +1791,6 @@ ad.test(t, plnorm, fit1_alt_25_29w$estimate[1], fit1_alt_25_29w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_25_29w$estimate[1], fit2_alt_25_29w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_25_29w$estimate[1], fit2_alt_25_29w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit but lognormal above 0.05
 
 
 #risk of SC = 0 for women 30-39 years
@@ -1837,7 +1829,7 @@ ad.test(t, plnorm, fit1_alt_40_44w$estimate[1], fit1_alt_40_44w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_40_44w$estimate[1], fit2_alt_40_44w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_40_44w$estimate[1], fit2_alt_40_44w$estimate[2])  #Anderson-Darling test
 
-# gamma, lognormal above 0.05
+
 
 #Age 45-49, female
 Proc45_49w <- subset(Alt_scenario, agegroups=="45-49" & sex =="2", select = procmeat.new)
@@ -1872,7 +1864,7 @@ ad.test(t, plnorm, fit1_alt_45_49w$estimate[1], fit1_alt_45_49w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_45_49w$estimate[1], fit2_alt_45_49w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_45_49w$estimate[1], fit2_alt_45_49w$estimate[2])  #Anderson-Darling test
 
-# gamma has much better fit but lognormal just above 0.05
+
 
 #Age 50-54, female
 Proc50_54w <- subset(Alt_scenario, agegroups=="50-54" & sex =="2", select = procmeat.new)
@@ -1908,7 +1900,7 @@ ad.test(t, plnorm, fit1_alt_50_54w$estimate[1], fit1_alt_50_54w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_50_54w$estimate[1], fit2_alt_50_54w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_50_54w$estimate[1], fit2_alt_50_54w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal above 0.05
+
 
 #Age 55-59, female
 Proc55_59w <- subset(Alt_scenario, agegroups=="55-59" & sex =="2", select = procmeat.new)
@@ -1944,7 +1936,7 @@ ad.test(t, plnorm, fit1_alt_55_59w$estimate[1], fit1_alt_55_59w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_55_59w$estimate[1], fit2_alt_55_59w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_55_59w$estimate[1], fit2_alt_55_59w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit, lognormal above 0.05
+
 
 #Age 60-64, female
 Proc60_64w <- subset(Alt_scenario, agegroups=="60-64" & sex =="2", select = procmeat.new)
@@ -1979,7 +1971,7 @@ ad.test(t, plnorm, fit1_alt_60_64w$estimate[1], fit1_alt_60_64w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_60_64w$estimate[1], fit2_alt_60_64w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_60_64w$estimate[1], fit2_alt_60_64w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit but lognormal  just above 0.05
+
 
 #Age 65-69, female
 Proc65_69w <- subset(Alt_scenario, agegroups=="65-69" & sex =="2", select = procmeat.new)
@@ -2013,7 +2005,7 @@ ad.test(t, plnorm, fit1_alt_65_69w$estimate[1], fit1_alt_65_69w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_65_69w$estimate[1], fit2_alt_65_69w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_65_69w$estimate[1], fit2_alt_65_69w$estimate[2])  #Anderson-Darling test
 
-# gamma and lognormal are equally good
+
 
 #Age 70-74, female
 Proc70_74w <- subset(Alt_scenario, agegroups=="70-74" & sex =="2", select = procmeat.new)
@@ -2047,7 +2039,7 @@ ad.test(t, plnorm, fit1_alt_70_74w$estimate[1], fit1_alt_70_74w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_70_74w$estimate[1], fit2_alt_70_74w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_70_74w$estimate[1], fit2_alt_70_74w$estimate[2])  #Anderson-Darling test
 
-# gamma has the best fit but lognormal above 0.05
+
 
 #Age 75-79, female
 Proc75_79w <- subset(Alt_scenario, agegroups=="75-79" & sex =="2", select = procmeat.new)
@@ -2081,7 +2073,6 @@ ad.test(t, plnorm, fit1_alt_75_79w$estimate[1], fit1_alt_75_79w$estimate[2])  #A
 cvm.test(t2, pgamma, fit2_alt_75_79w$estimate[1], fit2_alt_75_79w$estimate[2])  #Cram?r-von Mises test
 ad.test(t2, pgamma, fit2_alt_75_79w$estimate[1], fit2_alt_75_79w$estimate[2])  #Anderson-Darling test
 
-# gamma and lognormal are equally good
 
 
 ##### DALY calc males #####
@@ -2089,7 +2080,7 @@ ad.test(t2, pgamma, fit2_alt_75_79w$estimate[1], fit2_alt_75_79w$estimate[2])  #
 max(MeatDaily$proc.meat)
 # [1] 467.1429
 
-# truncate at 500 g processed/day. Truncation did not change mean.
+# Truncate at 500 g processed/day to avoid extreme values. Truncation did not change mean.
 
 
 # risk of SC = 0 for 15-29 year old males
