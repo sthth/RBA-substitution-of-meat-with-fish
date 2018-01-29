@@ -1,3 +1,7 @@
+
+### We use a simple fraction calculation to estimate the fraction of individuals below AR
+
+
 #Packages
 library(fitdistrplus)
 library(data.table)
