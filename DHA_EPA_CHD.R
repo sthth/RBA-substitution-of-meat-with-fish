@@ -5748,4 +5748,3 @@ write.csv(tDALY_scen3_fish_CHD_unc, "tDALY_scen3_fish_CHD_unc.csv")
 tDALY_scen4_fish_CHD_matrix <- apply(tDALY_scen4_fish_CHD, 2, function(x) x*1)
 tDALY_scen4_fish_CHD_unc <- apply(tDALY_scen4_fish_CHD_matrix, 2, function(x) mean(x))
 write.csv(tDALY_scen4_fish_CHD_unc, "tDALY_scen4_fish_CHD_unc.csv")
-
